@@ -1,0 +1,52 @@
+<!-- Filter Datatables -->
+<section id="ngx-datatable-filter">
+  <div class="row">
+    <div class="col-12">
+    </div>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <!-- ngx-datatable-filter -->
+            <fieldset class="form-group">
+              <!--              <button routerLink="/users-add" class = "btn btn-primary"> Add User</button>-->
+              <label>
+                <select name="users-list-select"
+                        class="form-control form-control-sm d-inline-block width-100 p-right-25 pl-4 mx-1"
+                        (click)="updateLimit($event)">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                entries</label>
+
+              <label for="ngx-filter-ref" class="float-right">Search:
+                <input id="ngx-filter-ref" class="form-control form-control-sm d-inline-block width-200 ml-1"
+                       type="text" (keyup)="filterUpdate($event)" />
+              </label>
+            </fieldset>
+            <ngx-datatable class="bootstrap core-bootstrap" id="bold" [columnMode]="ColumnMode.force" [headerHeight]="50"
+                           [footerHeight]="50"  rowHeight="auto" [limit]="limitRef" [rows]="rows" [scrollbarH]="true"
+                           [columns]="columns">
+              <ngx-datatable-column   name="Nom" prop="username"  [width]="70" ></ngx-datatable-column>
+              <ngx-datatable-column name="Prenom" prop="prenom" [width]="70"></ngx-datatable-column>
+              <ngx-datatable-column name="Email" prop="email" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Role" prop="role" [width]="70"></ngx-datatable-column>
+              <ngx-datatable-column name="Actions" prop="id" [width]="50">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  <a (click)="onUpdateUser(value)"><i class="ft-edit text-primary cursor-pointer mr-2"></i></a>
+                  <a  (click)="onDeleteUser(value)"><i class="fa fa-trash-o" style="font-size:16px;color:red"></i></a>
+                  <!--    <a (click)="onUpdateUser(value)"><i class="ft-edit text-primary cursor-pointer mr-2"></i></a>
+                      <a (click)="onDeleteUser(value)"><i class="ft-delete text-danger cursor-pointer"></i></a>-->
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+            <!-- ngx-datatable-filter -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Filter Datatables -->

@@ -1,0 +1,85 @@
+<section id="ngx-datatable-filter">
+  <div class="row">
+    <div class="col-12">
+
+    </div>
+    <div class="col-lg-6 col-12 float-right">
+
+  <div class="card-body">
+      <Button  (click)="addDomaine()" class="btn btn-primary">
+        <span style="margin-right:10px;" >
+        </span> Ajouter Nouveau domaine
+<!--        <img src="assets/img/Add_Circle.png" width="50" height="50"  >-->
+      </Button>
+    </div>
+<!--        <div class="card-content">-->
+<!--          <form [formGroup]="domaineform" (ngSubmit)="onSubmit()">-->
+<!--            <div class="card-body">-->
+<!--              <fieldset>-->
+<!--                <div class="input-group"  >-->
+<!--                  <input type="text" class="form-control" placeholder="Add New Domain" formControlName="name"/>-->
+<!--                  <div class="input-group-append">-->
+<!--                    <button class="btn btn-primary" type="submit" [disabled]="!domaineform.valid">Add</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </fieldset>-->
+<!--            </div>-->
+<!--          </form>-->
+<!--        </div>-->
+      </div>
+
+    <div class="col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <!-- ngx-datatable-filter -->
+            <fieldset class="form-group">
+              <label
+              >Show
+                <select
+                  name="users-list-select"
+                  class="form-control form-control-sm d-inline-block width-100 p-right-25 pl-4 mx-1"
+                  (click)="updateLimit($event)"
+                >
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                entries</label>
+              <label for="ngx-filter-ref" class="float-right"
+              >Search:
+                <input
+                  id="ngx-filter-ref"
+                  class="form-control form-control-sm d-inline-block width-200 ml-1"
+                  type="text"
+                  (keyup)="filterUpdate($event)"
+                />
+              </label>
+            </fieldset>
+            <ngx-datatable
+              class="bootstrap core-bootstrap"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              rowHeight="auto"
+              [limit]="limitRef"
+              [rows]="rows"
+              [columns]="columns"
+              id="bold"
+            >
+              <ngx-datatable-column name="Nom" prop="nom" [width]="70"></ngx-datatable-column>
+              <ngx-datatable-column name="Actions" prop="id" [width]="50">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  <a  (click)="onDeleteDomaine(value)"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+            <!-- ngx-datatable-filter -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Filter Datatables -->

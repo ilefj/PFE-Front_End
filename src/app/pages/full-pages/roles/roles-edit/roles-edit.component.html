@@ -1,0 +1,216 @@
+<section class="users-edit">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <!-- Nav-tabs -->
+              <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav-tabs justify-content-left">
+                <li [ngbNavItem]="1">
+                  <a ngbNavLink class="nav-link d-flex align-items-center">
+                    <i class="ft-user mr-1"></i>
+                    <span class="d-none d-sm-block">Role</span>
+                  </a>
+                  <ng-template ngbNavContent>
+                    <!-- Account content starts -->
+                    <div class="mt-2" id="role">
+                      <!-- Media object starts
+                      <div class="media">
+                        <img src="assets/img/portrait/small/avatar-s-2.png" alt="user edit avatar"
+                          class="users-avatar-shadow avatar mr-3 rounded-circle" height="64" width="64">
+                        <div class="media-body">
+                          <h4>Avatar</h4>
+                          <div class="d-flex flex-sm-row flex-column justify-content-start px-0 mb-sm-2">
+                            <button class="btn btn-sm btn-primary mb-1 mb-sm-0">Change</button>
+                            <button class="btn btn-sm bg-light-secondary ml-sm-2">Reset</button>
+                          </div>
+                        </div>
+                      </div>-->
+                      <!-- Media object ends -->
+
+                      <!-- Account form starts -->
+                      <form novalidate>
+                        <div class="row">
+                          <div class="col-12 col-md-6">
+                            <div class="form-group">
+                              <div class="controls">
+                                <label for="users-edit-username">Role</label>
+                                <input type="text" id="users-edit-username" class="form-control" placeholder="Username"
+                                  value="{{role}}" required aria-invalid="false">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 users-module">
+                            <div class="table-responsive">
+                              <table class="table mb-0 mt-3">
+                                <thead>
+                                  <tr>
+                                    <th>Module Permission</th>
+                                    <th>Read</th>
+                                    <th>Write</th>
+                                    <th>Create</th>
+                                    <th>Delete</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Users</td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox1" checked>
+                                        <label for="users-checkbox1"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox2">
+                                        <label for="users-checkbox2"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox3">
+                                        <label for="users-checkbox3"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox4" checked>
+                                        <label for="users-checkbox4"></label>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Articles</td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox5">
+                                        <label for="users-checkbox5"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox6" checked>
+                                        <label for="users-checkbox6"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox7">
+                                        <label for="users-checkbox7"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox8" checked>
+                                        <label for="users-checkbox8"></label>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Staff</td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox9" checked>
+                                        <label for="users-checkbox9"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox10" checked>
+                                        <label for="users-checkbox10"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox11">
+                                        <label for="users-checkbox11"></label>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="users-checkbox12">
+                                        <label for="users-checkbox12"></label>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                          <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-3 mt-sm-2">
+                            <button type="submit" class="btn btn-primary mb-2 mb-sm-0 mr-sm-2">Save Changes</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                          </div>
+                        </div>
+                      </form>
+                      <!-- Account form ends -->
+                    </div>
+                    <!-- Account content ends -->
+                  </ng-template>
+                </li>
+                <li [ngbNavItem]="2">
+                  <a ngbNavLink class="nav-link d-flex align-items-center">
+                    <i class="ft-info mr-1"></i>
+                    <span class="d-none d-sm-block">Information</span>
+                  </a>
+                  <ng-template ngbNavContent>
+                    <!-- Information content starts -->
+                    <div class="mt-2" id="information">
+                      <!-- Information form starts -->
+                      <div class="col-12">
+                          <div class="content">
+                            <div>
+                              <!-- ngx-datatable-filter -->
+                              <fieldset class="form-group">
+                                <label>Show
+                                  <select name="users-list-select"
+                                    class="form-control form-control-sm d-inline-block width-100 p-right-25 pl-4 mx-1"
+                                    (click)="updateLimit($event)">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                  </select>
+                                  entries</label>
+                                <label for="ngx-filter-ref" class="float-right">Search:
+                                  <input id="ngx-filter-ref" class="form-control form-control-sm d-inline-block width-200 ml-1"
+                                    type="text" (keyup)="filterUpdate($event)" />
+                                </label>
+                              </fieldset>
+                              <ngx-datatable class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force" [headerHeight]="50"
+                                [footerHeight]="50" rowHeight="auto" [limit]="limitRef" [rows]="rows" [scrollbarH]="true"
+                                [columns]="columns">
+                                <ngx-datatable-column name="Nom" prop="username" [width]="70"></ngx-datatable-column>
+                                <ngx-datatable-column name="Prenom" prop="prenom" [width]="70"></ngx-datatable-column>
+                                <ngx-datatable-column name="Email" prop="email" [width]="150"></ngx-datatable-column>
+                                <ngx-datatable-column name="Role" prop="role" [width]="70"></ngx-datatable-column>
+                                <ngx-datatable-column name="Actions" prop="id" [width]="50">
+                                  <ng-template ngx-datatable-cell-template let-value="value">
+                                    <a (click)="onUpdateUser(value)"><i class="ft-edit text-primary cursor-pointer mr-2"></i></a>
+                                    <a (click)="onDeleteUser(value)"><i class="fa fa-trash-o" style="font-size:16px;color:red"></i></a>
+                                  </ng-template>
+                                </ngx-datatable-column>
+                              </ngx-datatable>
+                              <!-- ngx-datatable-filter -->
+                            </div>
+                          </div>
+
+                      </div>
+                      <!-- Information form ends -->
+                    </div>
+                    <!-- Information content ends -->
+                  </ng-template>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div [ngbNavOutlet]="nav"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

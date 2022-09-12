@@ -1,0 +1,38 @@
+<section id="ngx ">
+  <div class="card col-md-12 ">
+    <div class="card-content">
+      <div class="card-body">
+        <div  >
+          <div class="row my-1 ">
+            <div class="col-md-4"><h4 class="text-primary">Titre de l'Offre</h4></div>
+            <div class="col-md-8">
+              <h4> {{offre.titre}}</h4>
+            </div>
+          </div>
+          <hr>
+          <h4 class="text-primary">Offre Details</h4>
+          <div class="row my-1 ">
+            <div class="col-md-4"> <i class="ft-briefcase m-2"></i> Description de L'offre</div>
+            <div class="col-md-8">   {{offre.description}}</div>
+          </div>
+          <div class="row my-1 ">
+            <div class="col-md-4"> <i class="ft-package m-2"></i>Domaine de l'entreprise</div>
+            <div class="col-md-8">   {{offre.domaine.nom}}</div>
+          </div>
+          <div class="row my-1  ">
+            <div class="col-md-4" ><i class="ft-mail m-2"></i>Réference de l'Offre</div>
+            <div class="col-md-8">   {{offre.reference}}</div>
+          </div>
+          <div class="row my-2 ">
+            <div class="col-md-4">  <i class="ft-map m-2"></i>Date Creation</div>
+            <div class="col-md-8">   {{offre.dateCreation | date: 'MM/dd/yyyy'}}</div>
+          </div>
+
+          <hr>
+          <h4 class="text-primary">Ressources de l'offre Details</h4>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

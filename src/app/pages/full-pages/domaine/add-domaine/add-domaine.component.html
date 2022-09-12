@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add New Domaine</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+
+  </button>
+</div>
+<form [formGroup]="domaineform" (ngSubmit)="submitForm()">
+  <div class="modal-body taskboard-modal">
+    <div class="container">
+      <fieldset class="form-group position-relative has-icon-left">
+        <div class="form-control-position">
+          <i class="ft-edit-2"></i>
+        </div>
+        <input
+          type="text"
+          formControlName="domaine"
+          class="form-control"
+          id="todoTitle"
+          placeholder="Domaine"
+          (keydown.enter)="$event.preventDefault()"
+          required
+          #todoTitle
+        />
+        <div class="form-control-position control-position-right">
+          <i class="ft-edit-2"></i>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="modal-footer taskboard-modal-footer">
+    <button type="submit" class="btn btn-primary btn-save">Add</button>
+  </div>
+</form>

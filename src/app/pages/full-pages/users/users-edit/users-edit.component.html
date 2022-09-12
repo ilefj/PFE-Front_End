@@ -1,0 +1,298 @@
+<section id="ngx " class=" row mt-Please tell us about yourself.3  justify-content-center ">
+
+  <section id="ngx" class=" row mt-3  justify-content-center " xmlns="http://www.w3.org/1999/html">
+
+
+    <div class="card col-md-11 ">
+
+      <div class="card-content">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <img src="assets/img/update.png" class="img-fluid" width="800em"/>
+            </div>
+            <div class="col-lg-6">
+
+              <form [formGroup]="updateForm" (ngSubmit)="updateUser()">
+                <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
+                  <aw-wizard-step [stepTitle]="'Step 1'"
+                                  [navigationSymbol]="{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }">
+                    <br/>
+                    <h4 class="head text-center">Modifier Offre</h4>
+                    <br/>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="form-control-label">Nom </label>
+                          <input type="text" formControlName="username" class="form-control mb-2"
+                                 placeholder=" Nom"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.username.invalid, 'is-valid': updateFormSubmitted && !rf.username.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.username.invalid || rf.username.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ est obligatoire
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+
+                        <div class="form-group">
+                          <label class="form-control-label">Prenom</label>
+                          <input type="text" formControlName="prenom" class="form-control mb-2"
+                                 placeholder="User Name"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.prenom.invalid, 'is-valid': updateFormSubmitted && !rf.prenom.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.prenom.invalid || rf.prenom.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ est obligatoire
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                        <label class="form-control-label" > Telephone</label>
+                        <input type="text" formControlName="telephone" class="form-control mb-2"
+                               placeholder="+216"
+                               [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.telephone.invalid, 'is-valid': updateFormSubmitted && !rf.telephone.invalid }"
+                               required>
+                        <div *ngIf="updateFormSubmitted && (rf.telephone.invalid || rf.telephone.errors?.required)"
+                             class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ est obligatoire
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label" >Adresse</label>
+                      <input type="text" formControlName="adresse" class="form-control mb-2"
+                             placeholder="Adresse"
+                             [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.adresse.invalid, 'is-valid': updateFormSubmitted && !rf.adresse.invalid }"
+                             required>
+                      <div *ngIf="updateFormSubmitted && (rf.adresse.invalid || rf.adresse.errors?.required)"
+                           class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> User
+                        Adresse est obligatoire
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-control-label" >Email</label>
+                      <input type="text" formControlName="email" class="form-control mb-2"
+                             placeholder="email"
+                             [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.email.invalid, 'is-valid': updateFormSubmitted && !rf.email.invalid }"
+                             required>
+                      <div *ngIf="updateFormSubmitted && (rf.email.invalid || rf.email.errors?.required)"
+                           class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> User
+                        email number is required
+                      </div>
+                    </div>
+
+                    <br/>
+                    <div
+                      class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-3 mt-sm-2">
+                      <div class="form-group text-center">
+                        <button uiSref="work" type="submit" class="btn btn-primary" >
+                          Enregistrer
+                        </button>
+                        <button uiSref="personal" type="button" class="btn btn-light mr-1" awNextStep>
+                          Next
+                                    <span style="margin-right:10px;">
+                                        <i class="ft-chevron-right"></i>
+                                    </span>
+                        </button>
+
+                      </div>
+                    </div>
+
+                  </aw-wizard-step>
+                  <aw-wizard-step [stepTitle]="'Step 2'"
+                                  [navigationSymbol]="{ symbol: '&#xf0b1;', fontFamily: 'FontAwesome' }">
+                    <br/>
+                    <div class='row'>
+                      <div class='col-12 '>
+                        <div class="form-group">
+                          <label class="form-control-label" >Nom Entreprise</label>
+                          <input type="text" formControlName="nom_Entreprise" class="form-control mb-2"
+                                 placeholder="Nom_Entreprise"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.nom_Entreprise.invalid, 'is-valid': updateFormSubmitted && !rf.nom_Entreprise.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.nom_Entreprise.invalid || rf.nom_Entreprise.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            Ce Champ est obligatoire
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-12'>
+                        <div class="row">
+                          <div class='col-sm-12 col-sm-6'>
+                            <div class="form-group">
+                              <label class="form-control-label" for="activite_Entreprise">Activité Entreprise</label>
+                              <input class="form-control input-md" formControlName="activite_Entreprise" required id="activite_Entreprise"
+                                     name="activite_Entreprise" type="text" placeholder="Enter Your Activité_Entreprise">
+
+                            </div>
+                            <div class="form-group">
+                              <div class='col-sm-12 col-sm-6'>
+                                <select id="users-edit-role" class="form-control" required formControlName="role">
+                                  <option value="" selected="">Select Role</option>
+                                  <option *ngFor="let role of roles">{{role.Role}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class='col-12 col-sm-6'>
+                            <div class="form-group">
+                              <label class="form-control-label" for="code_Fiscale">Code Fiscale</label>
+                              <input class="form-control input-md "formControlName="code_Fiscale"  required id="Code_Fiscale" name="code_Fiscale"
+                                     type="text" placeholder="Enter Your Code_Fiscale">
+
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <!--                    <div class="form-group text-center">-->
+<!--                      <button uiSref="work" type="button" class="btn btn-secondary mr-1" awPreviousStep>-->
+<!--                                            <span style="margin-right:10px;">-->
+<!--                                                <i class="ft-chevron-left"></i>-->
+<!--                                            </span> Previous-->
+<!--                      </button>-->
+<!--                      <button type="submit" class="btn btn-success"  >Register-->
+<!--                        <span style="margin-left:10px;"></span>-->
+<!--                      </button>-->
+<!--                    </div>-->
+                    <br/>
+                    <div
+                      class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-3 mt-sm-2">
+                    <div class="form-group text-center space-20">
+                      <button uiSref="personal" type="button" class="btn btn-light mr-1" awPreviousStep>
+                                    <span style="margin-right:10px;">
+                                        <i class="ft-chevron-left"></i>
+                                    </span> Previous
+                      </button>
+
+                      <button uiSref="work" type="submit"   class="btn btn-primary" >
+                        Enregistrer les modifications
+
+                      </button>
+                    </div>
+                    </div>
+                  </aw-wizard-step>
+
+                </aw-wizard>
+              </form>
+            </div>
+            <div class="col-12 users-module">
+              <div class="table-responsive">
+                <table class="table mb-0 mt-3">
+                  <thead>
+                  <tr>
+                    <th>Module Permission</th>
+                    <th>Read</th>
+                    <th>Write</th>
+                    <th>Create</th>
+                    <th>Delete</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Users</td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox1" checked />
+                        <label for="users-checkbox1"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox2" />
+                        <label for="users-checkbox2"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox3" />
+                        <label for="users-checkbox3"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox4" checked />
+                        <label for="users-checkbox4"></label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Articles</td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox5"/>
+                        <label for="users-checkbox5"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox6" checked />
+                        <label for="users-checkbox6"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox7"/>
+                        <label for="users-checkbox7"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox8" checked />
+                        <label for="users-checkbox8"></label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Staff</td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox9" checked />
+                        <label for="users-checkbox9"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox10" checked />
+                        <label for="users-checkbox10"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox11"/>
+                        <label for="users-checkbox11"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="checkbox">
+                        <input type="checkbox" id="users-checkbox12" />
+                        <label for="users-checkbox12"></label>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

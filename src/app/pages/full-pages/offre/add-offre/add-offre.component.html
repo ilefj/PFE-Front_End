@@ -1,0 +1,151 @@
+<section id="ngx " class=" row mt-3  justify-content-center " xmlns="http://www.w3.org/1999/html">
+  <div class="card col-md-12 ">
+    <div class="card-content">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="assets/img/Add tasks-rafiki.png" class="img-fluid"/>
+          </div>
+          <div class="col-lg-6">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
+                <aw-wizard-step [stepTitle]="'Step 1'"
+                                [navigationSymbol]="{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }">
+                  <h4 class="head text-center">Créer un nouveau Offre </h4>
+                  <br/>
+                  <div class='row'>
+                    <div class='col-12'>
+                      <div class="row">
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label">Titre</label>
+                            <input type="text" formControlName="titre" class="form-control mb-2"
+                                   placeholder="Titre"
+                                   [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.titre.invalid, 'is-valid': registerFormSubmitted && !rf.titre.invalid }"
+                                   required>
+                            <div *ngIf="registerFormSubmitted && (rf.titre.invalid || rf.titre.errors?.required)"
+                                 class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> Titre is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label">Description</label>
+                            <input type="text" formControlName="description" class="form-control mb-2"
+                                   placeholder=" Description "
+                                   [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.description.invalid, 'is-valid': registerFormSubmitted && !rf.description.invalid }"
+                                   required>
+                            <div *ngIf="registerFormSubmitted && (rf.description.invalid || rf.description.errors?.required)"
+                                 class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                              Description is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label"> Réference</label>
+                            <input type="text" formControlName="reference" class="form-control mb-2"
+                                   placeholder="reference"
+                                   [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.reference.invalid, 'is-valid': registerFormSubmitted && !rf.reference.invalid }"
+                                   required>
+                            <div
+                              *ngIf="registerFormSubmitted && (rf.reference.invalid || rf.reference.errors?.required)"
+                              class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                              reference is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <label class="form-control-label">Date Creation</label>
+                          <input type="date" formControlName="dateCreation" class="form-control mb-2"
+                                 placeholder="Date Creation"
+                                 [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.dateCreation.invalid, 'is-valid': registerFormSubmitted && !rf.dateCreation.invalid }"
+                                 required>
+                          <div *ngIf="registerFormSubmitted && (rf.dateCreation.invalid || rf.dateCreation.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> User
+                            Date Creation is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class='col-sm-12 col-sm-6'>
+                            <label class="form-control-label">Select Domain</label>
+                            <select class='form-control' required formControlName="domaineId" >
+                              <option *ngFor="let domaine of domaines " value="{{domaine.id}}">{{domaine.nom}}</option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group text-center">
+                        <button uiSref="work" type="submit" class="btn btn-primary" [disabled]="registerForm.controls['titre'].invalid || registerForm.controls['description'].invalid || registerForm.controls['reference'].invalid || registerForm.controls['dateCreation'].invalid|| registerForm.controls['domaineId'].invalid "
+                                awNextStep>
+                          Next
+                          <span style="margin-left:10px;">
+                              <i class="ft-chevron-right"></i></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </aw-wizard-step>
+                <aw-wizard-step [stepTitle]="'Step 2'"
+                                [navigationSymbol]="{ symbol: '&#xf0b1;', fontFamily: 'FontAwesome' }">
+                  <h4 class="head text-center">Ajout Ressource</h4>
+
+                  <br/>
+                  <div class='row'>
+                    <div class='col-12 '>
+                      <div class="row">
+                        <div class='col-12 col-sm-6'>
+                          <div class="row">
+
+                            <div class='col-sm-12 col-sm-6'>
+                              <label class="form-control-label">Select Employé</label>
+                              <select class='form-control' required formControlName="Employe" (change)="sendEmployerId()" >
+                                <option *ngFor="let employe of employes " value="{{employe.id}}">{{employe.nom}}</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label">Salaire</label>
+
+                            <input type="text" formControlName="salaire" class="form-control mb-2"
+                                  [value]="SalaireEmployer">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="form-group text-center space-30">
+                    <button uiSref="work" type="button" class="btn btn-secondary mr-1" awPreviousStep>
+                                            <span style="margin-right:10px;">
+                                                <i class="ft-chevron-left"></i>
+                                            </span> Previous
+                    </button>
+
+                    <button uiSref="work" type="submit"  class="btn btn-info" awNextStep>
+                      Next
+                      <span style="margin-left:10px;">
+                                        <i class="ft-chevron-right"></i>
+                                    </span>
+                    </button>
+                  </div>
+
+                </aw-wizard-step>
+
+              </aw-wizard>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

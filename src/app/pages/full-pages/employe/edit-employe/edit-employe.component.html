@@ -1,0 +1,144 @@
+<section id="ngx " class=" row mt-3  justify-content-center " xmlns="http://www.w3.org/1999/html">
+  <div class="card col-md-12 ">
+    <div class="card-content">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="assets/img/Employee%20of%20the%20month-amico.png" class="img-fluid"/>
+          </div>
+          <div class="col-lg-6">
+            <form [formGroup]="updateForm" (ngSubmit)="updateEmploye()">
+              <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
+                <aw-wizard-step [stepTitle]="'Step 1'"
+                                [navigationSymbol]="{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }">
+                  <h4 class="head text-center">Modifier Employé</h4>
+                  <br/>
+                  <div class='row'>
+                    <div class='col-12'>
+                      <div class="row">
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label">NCIN</label>
+                            <input type="text" formControlName="nCin" class="form-control mb-2"
+                                   placeholder="NCin"
+                                   [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.nCin.invalid, 'is-valid': updateFormSubmitted && !rf.nCin.invalid }"
+                                   required>
+                            <div *ngIf="updateFormSubmitted && (rf.nCin.invalid || rf.nCin.errors?.required)"
+                                 class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> nCin est obligatoire
+                            </div>
+                          </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label">Nom</label>
+                            <input type="text" formControlName="nom" class="form-control mb-2"
+                                   placeholder=" Nom "
+                                   [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.nom.invalid, 'is-valid': updateFormSubmitted && !rf.nom.invalid }"
+                                   required>
+                            <div *ngIf="updateFormSubmitted && (rf.nom.invalid || rf.nom.errors?.required)"
+                                 class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                              Nom est obligatoire
+                            </div>
+                          </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label">Prénom</label>
+                            <input type="text" formControlName="prenom" class="form-control mb-2"
+                                   placeholder="prenom"
+                                   [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.prenom.invalid, 'is-valid': updateFormSubmitted && !rf.prenom.invalid }"
+                                   required>
+                            <div
+                              *ngIf="updateFormSubmitted && (rf.prenom.invalid || rf.prenom.errors?.required)"
+                              class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                              prenom est obligatoire
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <label class="form-control-label">Poste</label>
+                          <input type="text" formControlName="poste" class="form-control mb-2"
+                                 placeholder="poste"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.poste.invalid, 'is-valid': updateFormSubmitted && !rf.poste.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.poste.invalid || rf.poste.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            Poste est obligatoire
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <label class="form-control-label">Matricule</label>
+                          <input type="text" formControlName="matricule" class="form-control mb-2"
+                                 placeholder="matricule"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.matricule.invalid, 'is-valid': updateFormSubmitted && !rf.matricule.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.matricule.invalid || rf.matricule.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            Matricule est obligatoire
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <label class="form-control-label">Email</label>
+                          <input type="text" formControlName="email" class="form-control mb-2"
+                                 placeholder="email"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.email.invalid, 'is-valid': updateFormSubmitted && !rf.matricule.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.email.invalid || rf.email.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            email est obligatoire
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <label class="form-control-label">Adresse</label>
+                          <input type="text" formControlName="adresse" class="form-control mb-2"
+                                 placeholder="adresse"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.adresse.invalid, 'is-valid': updateFormSubmitted && !rf.adresse.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.adresse.invalid || rf.adresse.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            adresse est obligatoire
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <label class="form-control-label">Telephone</label>
+                          <input type="tel" pattern="[0-9]{2}[0-9]{3}[0-9]{3}" formControlName="tel" class="form-control mb-2"
+                                 placeholder="Telephone"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.tel.invalid, 'is-valid': updateFormSubmitted && !rf.tel.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.tel.invalid || rf.tel.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            Telephone est obligatoire
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <label class="form-control-label">Salaire</label>
+                          <input type="text" formControlName="salaire" class="form-control mb-2"
+                                 placeholder="Salaire"
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted  && rf.salaire.invalid, 'is-valid': updateFormSubmitted  && !rf.salaire.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted  && (rf.salaire.invalid || rf.salaire.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            Salaire est obligatoire
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="form-group text-center">
+                        <button uiSref="work" type="submit" class="btn btn-primary" >
+                          Enregistrer les informations
+
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </aw-wizard-step>
+              </aw-wizard>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

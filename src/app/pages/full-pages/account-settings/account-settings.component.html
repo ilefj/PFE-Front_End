@@ -1,0 +1,234 @@
+<div class="row">
+  <div class="col-12">
+    <div class="content-header">Account Settings</div>
+    <p class="content-sub-header mb-1">Configure account settings to your needs.</p>
+  </div>
+</div>
+<!-- Account Settings starts -->
+<div class="row">
+  <div class="col-md-3 mt-3">
+    <!-- Nav tabs -->
+    <ul class="nav flex-column nav-pills" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:;" [ngClass]="{active: activeTab === 'general'}"
+           (click)="setActiveTab('general')" id="general-tab" data-toggle="tab" role="tab" aria-controls="general"
+           aria-selected="true">
+          <i class="ft-settings mr-1 align-middle"></i>
+          <span class="align-middle">General</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:;" [ngClass]="{active: activeTab === 'change-password'}"
+           (click)="setActiveTab('change-password')" id="change-password-tab" data-toggle="tab" role="tab"
+           aria-controls="change-password" aria-selected="false">
+          <i class="ft-lock mr-1 align-middle"></i>
+          <span class="align-middle">Change Password</span>
+        </a>
+      </li>
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="javascript:;" [ngClass]="{active: activeTab === 'info'}"-->
+<!--           (click)="setActiveTab('info')" id="info-tab" data-toggle="tab" role="tab" aria-controls="info"-->
+<!--           aria-selected="false">-->
+<!--          <i class="ft-info mr-1 align-middle"></i>-->
+<!--          <span class="align-middle">Info</span>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="javascript:;" [ngClass]="{active: activeTab === 'social-links'}"-->
+<!--           (click)="setActiveTab('social-links')" id="social-links-tab" data-toggle="tab" role="tab"-->
+<!--           aria-controls="social-links" aria-selected="false">-->
+<!--          <i class="ft-twitter mr-1 align-middle"></i>-->
+<!--          <span class="align-middle">Social Links</span>-->
+<!--        </a>-->
+<!--      </li>-->
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="javascript:;" [ngClass]="{active: activeTab === 'notifications'}"
+          (click)="setActiveTab('notifications')" id="notifications-tab" data-toggle="tab" role="tab"
+          aria-controls="notifications" aria-selected="false">
+          <i class="ft-bell mr-1 align-middle"></i>
+          <span class="align-middle">Notifications</span>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <!-- Tab panes -->
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="tab-content">
+            <!-- General Tab -->
+            <div class="tab-pane" [ngClass]="{active: activeTab === 'general'}" id="general" role="tabpanel"
+                 aria-labelledby="general-tab">
+              <form [formGroup]="generalForm" (ngSubmit)="onGeneralFormSubmit()">
+                <div class="row">
+                  <div class="col-12 form-group">
+                    <label for="Nom">Nom</label>
+                    <div class="controls">
+                      <input type="text" formControlName="username" class="form-control" placeholder="Username"
+                             [ngClass]="{ 'is-invalid': generalFormSubmitted && gf.username.invalid, 'is-valid': generalFormSubmitted && !gf.username.invalid }"
+                             required>
+                      <div *ngIf="generalFormSubmitted && (gf.username.invalid || gf.username.errors?.required)"
+                           class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
+                        required</div>
+                    </div>
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="name">Name</label>
+                    <div class="controls">
+                      <input type="text" formControlName="name" class="form-control" placeholder="Name"
+                             [ngClass]="{ 'is-invalid': generalFormSubmitted && gf.name.invalid, 'is-valid': generalFormSubmitted && !gf.name.invalid }"
+                             required>
+                      <div *ngIf="generalFormSubmitted && (gf.name.invalid || gf.name.errors?.required)"
+                           class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
+                        required</div>
+                    </div>
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="email">E-mail</label>
+                    <div class="controls">
+                      <input type="text" formControlName="email" class="form-control" placeholder="E-mail" disabled required>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <ngb-alert type="light-warning" class="mb-2" *ngIf="alertVisible" (close)="alertVisible = false">
+                      <p class="mb-0">Your email is not confirmed. Please check your inbox.</p>
+                      <a href="javascript:;" class="font-weight-bold text-warning">Resend confirmation</a>
+                    </ngb-alert>
+                  </div>
+                  <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                    <button type="submit" class="btn btn-primary mr-sm-2 mb-1">Save Changes</button>
+                    <button type="button" (click)="resetGeneral()" class="btn btn-secondary mb-1">Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Change Password Tab -->
+            <div class="tab-pane" [ngClass]="{active: activeTab === 'change-password'}" id="change-password"
+                 role="tabpanel" aria-labelledby="change-password-tab">
+              <form [formGroup]="changePasswordForm" (ngSubmit)="onChangePasswordFormSubmit()">
+                <div class="form-group">
+                  <label for="old-password">Old Password</label>
+                  <div class="controls">
+                    <input type="password" formControlName="oldPassword" class="form-control" placeholder="Old Password"
+                           [ngClass]="{ 'is-invalid': changePasswordFormSubmitted && cpf.oldPassword.invalid, 'is-valid': changePasswordFormSubmitted && !cpf.oldPassword.invalid }"
+                           required>
+                    <div
+                      *ngIf="changePasswordFormSubmitted && (cpf.oldPassword.invalid || cpf.oldPassword.errors?.required)"
+                      class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is required
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="new-password">New Password</label>
+                  <div class="controls">
+                    <input type="password" formControlName="newPassword" class="form-control" placeholder="New Password"
+                           [ngClass]="{ 'is-invalid': changePasswordFormSubmitted && cpf.newPassword.invalid, 'is-valid': changePasswordFormSubmitted && !cpf.newPassword.invalid }"
+                           required>
+                    <div
+                      *ngIf="changePasswordFormSubmitted && (cpf.newPassword.invalid || cpf.newPassword.errors?.required)"
+                      class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is required
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="retype-new-password">Retype New Password</label>
+                  <div class="controls">
+                    <input type="password" formControlName="retypeNewPassword" class="form-control"
+                           placeholder="New Password"
+                           [ngClass]="{ 'is-invalid': changePasswordFormSubmitted && cpf.retypeNewPassword.invalid, 'is-valid': changePasswordFormSubmitted && !cpf.retypeNewPassword.invalid }"
+                           required>
+                    <div
+                      *ngIf="changePasswordFormSubmitted && (cpf.retypeNewPassword.invalid || cpf.retypeNewPassword.errors?.required)"
+                      class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is required
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex flex-sm-row flex-column justify-content-end">
+                  <button type="submit" class="btn btn-primary mr-sm-2 mb-1">Save Changes</button>
+                  <button type="reset" class="btn btn-secondary mb-1">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Info Tab -->
+<!--            <div class="tab-pane" [ngClass]="{active: activeTab === 'info'}" id="info" role="tabpanel"-->
+<!--                 aria-labelledby="info-tab">-->
+<!--              <form [formGroup]="infoForm" (ngSubmit)="onInfoFormSubmit()">-->
+<!--                <div class="row">-->
+<!--                  <div class="col-12 form-group">-->
+<!--                    <label for="bdate">Birth Date</label>-->
+<!--                    <div class="controls">-->
+<!--                      <input ngbDatepicker (click)="datePicker.toggle()" #datePicker="ngbDatepicker"-->
+<!--                             formControlName="bdate" type="text" class="form-control pickadate" required-->
+
+<!--                             placeholder="Birth date">-->
+<!--                      <div *ngIf="infoFormSubmitted && (inf.bdate.invalid || inf.bdate.errors?.required)"-->
+<!--                           class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is-->
+<!--                        required</div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="col-12 form-group">-->
+<!--                    <label for="country">Adresse</label>-->
+<!--                    <div class="controls">-->
+<!--                      <input formControlName="adresse" type="text" class="form-control" required-->
+<!--                             placeholder="Adresse"-->
+<!--                             [ngClass]="{ 'is-invalid': infoFormSubmitted && inf.adresse.invalid, 'is-valid': infoFormSubmitted && !inf.adresse.invalid }">-->
+<!--                      <div *ngIf="infoFormSubmitted && (inf.adresse.invalid || inf.adresse.errors?.required)"-->
+<!--                           class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is-->
+<!--                        required</div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="col-12 form-group">-->
+<!--                    <label for="phone">Phone</label>-->
+<!--                    <div class="controls">-->
+<!--                      <input formControlName="phone" type="text" class="form-control" required-->
+<!--                             placeholder="Phone number"-->
+<!--                             [ngClass]="{ 'is-invalid': infoFormSubmitted && inf.phone.invalid, 'is-valid': infoFormSubmitted && !inf.phone.invalid }"-->
+<!--                             value="(+656) 254 2568">-->
+<!--                      <div *ngIf="infoFormSubmitted && (inf.phone.invalid || inf.phone.errors?.required)"-->
+<!--                           class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is-->
+<!--                        required</div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">-->
+<!--                    <button type="submit" class="btn btn-primary mr-sm-2 mb-1">Save Changes</button>-->
+<!--                    <button type="button" (click)="resetInfo()" class="btn btn-secondary mb-1">Cancel</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </form>-->
+<!--            </div>-->
+
+            <!-- Social Links Tab -->
+<!--            <div class="tab-pane" [ngClass]="{active: activeTab === 'social-links'}" id="social-links" role="tabpanel"-->
+<!--                 aria-labelledby="social-links-tab">-->
+<!--              <form [formGroup]="socialForm" (ngSubmit)="onSocialFormSubmit()">-->
+<!--                <div class="row">-->
+<!--                  <div class="col-12 form-group">-->
+<!--                    <label for="facebook">Facebook</label>-->
+<!--                    <input formControlName="facebook" type="text" class="form-control" placeholder="Add link">-->
+<!--                  </div>-->
+<!--                  <div class="col-12 form-group">-->
+<!--                    <label for="google+">Google+</label>-->
+<!--                    <input formControlName="googlePlus" type="text" class="form-control" placeholder="Add link">-->
+<!--                  </div>-->
+<!--                  <div class="col-12 form-group">-->
+<!--                    <label for="linkedin">Linkedin</label>-->
+<!--                    <input formControlName="linkedin" type="text" class="form-control" placeholder="Add link"-->
+<!--                           value="https://www.linkedin.com">-->
+<!--                  </div>-->
+<!--                  <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">-->
+<!--                    <button type="submit" class="btn btn-primary mr-sm-2 mb-1">Save Changes</button>-->
+<!--                    <button type="button" (click)="resetSocial()" class="btn btn-secondary mb-1">Cancel</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </form>-->
+<!--            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Account Settings ends -->

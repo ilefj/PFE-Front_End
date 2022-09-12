@@ -1,0 +1,106 @@
+<section id="ngx " class=" row mt-3  justify-content-center " xmlns="http://www.w3.org/1999/html">
+  <div class="card col-md-12 ">
+    <div class="card-content">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="assets/Auction-amico.png" class="img-fluid"/>
+          </div>
+          <div class="col-lg-6">
+            <form [formGroup]="updateForm" (ngSubmit)="UpdateOffre()">
+              <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
+                <aw-wizard-step [stepTitle]="'Step 1'"
+                                [navigationSymbol]="{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }">
+                  <h4 class="head text-center">Please tell us about Offer .</h4>
+                  <br/>
+                  <div class='row'>
+                    <div class='col-12'>
+                      <div class="row">
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label">Titre</label>
+                            <input type="text" formControlName="titre" class="form-control mb-2"
+                                   placeholder="Titre"
+                                   [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.titre.invalid, 'is-valid': updateFormSubmitted && !rf.titre.invalid }"
+                                   required>
+                            <div *ngIf="updateFormSubmitted && (rf.titre.invalid || rf.titre.errors?.required)"
+                                 class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> Titre is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label">Description</label>
+                            <input type="text" formControlName="description" class="form-control mb-2"
+                                   placeholder=" Your Company Name"
+                                   [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.description.invalid, 'is-valid': updateFormSubmitted && !rf.description.invalid }"
+                                   required>
+                            <div *ngIf="updateFormSubmitted && (rf.description.invalid || rf.description.errors?.required)"
+                                 class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                              Description is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>
+                          <div class="form-group">
+                            <label class="form-control-label"> Réference</label>
+                            <input type="text" formControlName="reference" class="form-control mb-2"
+                                   placeholder="reference"
+                                   [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.reference.invalid, 'is-valid': updateFormSubmitted && !rf.reference.invalid }"
+                                   required>
+                            <div
+                              *ngIf="updateFormSubmitted && (rf.reference.invalid || rf.reference.errors?.required)"
+                              class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                              reference is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <label class="form-control-label">dateCreation</label>
+                          <input type="text" formControlName="dateCreation" class="form-control mb-2"
+                                 placeholder="E-mail" disabled
+                                 [ngClass]="{ 'is-invalid': updateFormSubmitted && rf.dateCreation.invalid, 'is-valid': updateFormSubmitted && !rf.dateCreation.invalid }"
+                                 required>
+                          <div *ngIf="updateFormSubmitted && (rf.dateCreation.invalid || rf.dateCreation.errors?.required)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> User
+                            Date Creation is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class='col-sm-12 col-sm-6'>
+                            <label class="form-control-label">Select Domain</label>
+                          </div>
+                          <div class='col-sm-12 col-sm-6'>
+                            <select class='form-control' required formControlName="domaineId" >
+
+
+                              <option *ngFor="let option of domaines"
+                                      [selected]="option.id === offre.domaineId"
+                                      [value]="option.id">
+                                {{ option.nom }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group text-center">
+                        <button uiSref="work" type="submit" class="btn btn-primary" >
+                          Enregistrer les modifications
+
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </aw-wizard-step>
+              </aw-wizard>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
