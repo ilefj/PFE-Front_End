@@ -29,6 +29,8 @@ import {EditEmployeComponent} from "./employe/edit-employe/edit-employe.componen
 import {AddChat} from "../../chat-ngrx/store/chat.actions";
 import {AddEmployeComponent} from "./employe/add-employe/add-employe.component";
 import {DetailOffreComponent} from "./offre/detail-offre/detail-offre.component";
+import {ProduitComponent} from "./produit/produit.component";
+import {ServiceComponent} from "./service/service.component";
 
 const routes: Routes = [
   {
@@ -221,6 +223,20 @@ const routes: Routes = [
         component:DetailOffreComponent,
         data: {
           title: 'detail'
+        }
+      },
+      {
+        path: 'Produit',
+        component: ProduitComponent,
+        data: {
+          title: 'Produits'
+        }
+      },
+      {
+        path: 'Service',
+        component: ServiceComponent,
+        data: {
+          title: 'Services'
         }
       },
     ]

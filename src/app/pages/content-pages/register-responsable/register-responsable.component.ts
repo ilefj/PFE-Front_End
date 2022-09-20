@@ -1,5 +1,5 @@
 import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { FormControl, FormGroup, Validators, NgForm, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { AuthService } from 'app/shared/auth/auth.service';
 import { RoleService } from 'app/shared/auth/role.service';
@@ -7,6 +7,8 @@ import { MustMatch } from 'app/shared/directives/must-match.validator';
 import { Role } from 'app/shared/Models/RoleModel';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import {CustomValidators} from "ngx-custom-validators";
+import {ConfirmPasswordValidator} from "./confirm-password.validator";
 
 @Component({
   selector: 'app-register-responsable',
@@ -20,21 +22,23 @@ export class RegisterResponsableComponent implements OnInit, AfterViewInit  {
     ErrorMessage : string ;
     public roles : Role[] = [];
 
-      addform = new FormGroup({
-        username: new FormControl('',[ Validators.required]),
-        prenom: new FormControl('',[ Validators.required]),
-        adresse: new FormControl('',[ Validators.required]),
-        email: new FormControl('',[ Validators.required, Validators.email]),
-        password: new FormControl('',[ Validators.required]),
-        nom_Entreprise: new FormControl('',[ Validators.required]),
-        telephone: new FormControl('',[ Validators.required]),
-        activite_Entreprise: new FormControl('',[ Validators.required]),
-        taille_Entreprise: new FormControl('',[ Validators.required]),
-        role: new FormControl('',[ Validators.required]),
-        code_Fiscale: new FormControl('',[ Validators.required]),
 
-      })
-
+        public addform = this.formBuilder.group({
+          username: ['', Validators.required],
+          prenom: ['', Validators.required],
+          adresse:['',Validators.required],
+          email: ['', [Validators.required, Validators.email]],
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPassword: ['', Validators.required],
+          nom_Entreprise: ['', Validators.required],
+          telephone: ['', Validators.required],
+          activite_Entreprise: new FormControl('',[ Validators.required]),
+          taille_Entreprise:['',Validators.required],
+          role:['', Validators.required],
+          code_Fiscale: ['', Validators.required],
+        },{
+          validator: MustMatch('password', 'confirmPassword')
+        });
 
     constructor(private ref: ChangeDetectorRef,private formBuilder: FormBuilder, private router: Router , private authService: AuthService ,
                 private roleService:RoleService, private toastr: ToastrService) { }
@@ -74,7 +78,7 @@ export class RegisterResponsableComponent implements OnInit, AfterViewInit  {
           console.log("response code ok");
           this.addform.reset();
           this.toastr.success(' User has been added successfully')
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/login']);
         }else{
           this.ErrorMessage = data.responseMessage ;
           if(data.dateSet == null){

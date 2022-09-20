@@ -19,153 +19,170 @@
                                   [navigationSymbol]="{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }">
                     <h4 class="head text-center">Créer votre compte</h4>
 
-                     <div class="row">
-                       <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-6">
 
                         <div class="form-group">
                           <label class="form-control-label">Nom </label>
-                          <input type="text"  pattern="^[A-Za-z -]+$" formControlName="username" class="form-control mb-2"
+                          <input type="text" pattern="^[A-Za-z -]+$" formControlName="username"
+                                 class="form-control mb-2"
                                  placeholder=" Nom"
                                  [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.username.invalid, 'is-valid': registerFormSubmitted && !rf.username.invalid }"
                                  required>
                           <div *ngIf="registerFormSubmitted && (rf.username.invalid || rf.username.errors?.required)"
-                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ est obligatoire
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ
+                            est obligatoire
                           </div>
                         </div>
-                       </div>
-                       <div class="col-md-6">
+                      </div>
+                      <div class="col-md-6">
 
                         <div class="form-group">
                           <label class="form-control-label">Prenom</label>
-                          <input type="text" pattern="^[A-Za-z -]+$"formControlName="prenom" class="form-control mb-2"
+                          <input type="text" pattern="^[A-Za-z -]+$" formControlName="prenom" class="form-control mb-2"
                                  placeholder="User Name"
                                  [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.prenom.invalid, 'is-valid': registerFormSubmitted && !rf.prenom.invalid }"
                                  required>
                           <div *ngIf="registerFormSubmitted && (rf.prenom.invalid || rf.prenom.errors?.required)"
-                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ est obligatoire
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ
+                            est obligatoire
                           </div>
                         </div>
-                       </div>
-                     </div>
-                            <div class="form-group">
-                              <label class="form-control-label" > Telephone</label>
-                              <input type="tel" pattern="[0-9]{2}[0-9]{3}[0-9]{3}" formControlName="telephone" class="form-control mb-2"
-                                     placeholder="+216"
-                                     [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.telephone.invalid, 'is-valid': registerFormSubmitted && !rf.telephone.invalid }"
-                                     required>
-                              <div *ngIf="registerFormSubmitted && (rf.telephone.invalid || rf.telephone.errors?.required)"
-                                   class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ est obligatoire
-                              </div>
-                            </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-control-label"> Telephone</label>
+                      <input type="tel" pattern="[0-9]{2}[0-9]{3}[0-9]{3}" formControlName="telephone"
+                             class="form-control mb-2"
+                             placeholder="+216"
+                             [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.telephone.invalid, 'is-valid': registerFormSubmitted && !rf.telephone.invalid }"
+                             required>
+                      <div *ngIf="registerFormSubmitted && (rf.telephone.invalid || rf.telephone.errors?.required)"
+                           class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> ce champ est
+                        obligatoire
+                      </div>
+                    </div>
 
 
-
-                            <div class="form-group">
-                            <label class="form-control-label" >Email</label>
-                            <input type="text" formControlName="email" class="form-control mb-2"
-                                   placeholder="email"
-                                   [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.email.invalid, 'is-valid': registerFormSubmitted && !rf.email.invalid }"
-                                   required>
-                            <div *ngIf="registerFormSubmitted && (rf.email.invalid || rf.email.errors?.required)"
-                                 class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> User
-                              email  is required
-                            </div>
-                     </div>
-
+                    <div class="form-group">
+                      <label class="form-control-label">Email</label>
+                      <input type="text" formControlName="email" class="form-control mb-2"
+                             placeholder="email"
+                             [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.email.invalid, 'is-valid': registerFormSubmitted && !rf.email.invalid }"
+                             required>
+                      <div *ngIf="registerFormSubmitted && (rf.email.invalid || rf.email.errors?.required)"
+                           class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> User
+                        email is required
+                      </div>
+                    </div>
 
 
-                        <div class="form-group text-center">
-                          <button type="button" uiSref="work" class="btn btn-info" [disabled]="addform.controls['username'].invalid || addform.controls['prenom'].invalid || addform.controls['email'].invalid || addform.controls['telephone'].invalid "
-                                  awNextStep>
-                            Next
-                            <span style="margin-left:10px;">
+                    <div class="form-group text-center">
+                      <button type="button" uiSref="work" class="btn btn-info"
+                              [disabled]="addform.controls['username'].invalid || addform.controls['prenom'].invalid || addform.controls['email'].invalid || addform.controls['telephone'].invalid "
+                              awNextStep>
+                        Next
+                        <span style="margin-left:10px;">
                               <i class="ft-chevron-right"></i></span>
-                          </button>
-                        </div>
+                      </button>
+                    </div>
 
 
                   </aw-wizard-step>
                   <aw-wizard-step [stepTitle]="'Step 2'"
                                   [navigationSymbol]="{ symbol: '&#xf0b1;', fontFamily: 'FontAwesome' }">
                     <br/>
-                    <div class='row'>
-                      <div class='col-12 '>
-                        <div class="row">
-                          <div class='col-12 col-sm-6'>
-                            <div class="form-group">
-                              <label class="form-control-label">Password</label>
-                              <input type="password" formControlName="password" class="form-control mb-2"
-                                     placeholder="Password"
-                                     [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.password.invalid, 'is-valid': registerFormSubmitted && !rf.password.invalid }"
-                                     required>
-                              <div *ngIf="registerFormSubmitted && (rf.password.errors?.required)"
-                                   class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
-                                Password est obligatoire
-                              </div>
-                              <div
-                                *ngIf="registerFormSubmitted && (!rf.password.errors?.required && rf.password.errors?.minlength)"
-                                class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> Password
-                                must be
-                                at least 6 characters
-                              </div>
-                            </div>
-                          </div>
-<!--                          <div class="form-group">-->
-<!--                            <label class="form-control-label">Confirm Password</label>-->
-<!--                            <input type="password" class="form-control mb-2"-->
-<!--                                   placeholder="Confirm Password"-->
-<!--                                   [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.confirmPassword.invalid, 'is-valid': registerFormSubmitted && !rf.confirmPassword.invalid }"-->
-<!--                                   required>-->
-<!--                            <div-->
-<!--                              *ngIf="registerFormSubmitted && (rf.confirmPassword.errors?.required)"-->
-<!--                              class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> Confirm Password is required-->
-<!--                            </div>-->
-<!--                            <div *ngIf="registerFormSubmitted && (rf.confirmPassword.errors?.mustMatch)"-->
-<!--                                 class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>-->
-<!--                              Passwords must match-->
-<!--                            </div>-->
-<!--                          </div>-->
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label" >Adresse</label>
-                          <input type="text" formControlName="adresse" class="form-control mb-2"
-                                 placeholder="Adresse"
-                                 [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.adresse.invalid, 'is-valid': registerFormSubmitted && !rf.adresse.invalid }"
-                                 required>
-                          <div *ngIf="registerFormSubmitted && (rf.adresse.invalid || rf.adresse.errors?.required)"
-                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> User
-                               Adresse est obligatoire
-                          </div>
 
-                        </div>
-
+                    <div class="row">
+                      <div class="col-md-5">
                         <div class="form-group">
-                          <label class="form-control-label" >Nom Entreprise</label>
-                          <input type="text" formControlName="nom_Entreprise" class="form-control mb-2"
-                                 placeholder="Nom_Entreprise"
-                                 [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.nom_Entreprise.invalid, 'is-valid': registerFormSubmitted && !rf.nom_Entreprise.invalid }"
+                          <label class="form-control-label">Password</label>
+                          <input type="password" formControlName="password" class="form-control mb-2"
+                                 placeholder="Password"
+                                 [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.password.invalid, 'is-valid': registerFormSubmitted && !rf.password.invalid }"
                                  required>
-                          <div *ngIf="registerFormSubmitted && (rf.nom_Entreprise.invalid || rf.nom_Entreprise.errors?.required)"
+                          <div *ngIf="registerFormSubmitted && (rf.password.errors?.required)"
                                class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
-                              Ce Champ est obligatoire
+                            ce champ est obligatoire
+                          </div>
+                          <div
+                            *ngIf="registerFormSubmitted && (!rf.password.errors?.required && rf.password.errors?.minlength)"
+                            class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            Password
+                            must be
+                            at least 6 characters
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="form-group">
+                          <label class="form-control-label">Confirmer le mot de passe</label>
+                          <input type="password" formControlName="confirmPassword" class="form-control mb-2"
+                                 placeholder="Confirmation"
+                                 [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.confirmPassword.invalid, 'is-valid': registerFormSubmitted && !rf.confirmPassword.invalid }"
+                                 required>
+                          <div
+                            *ngIf="registerFormSubmitted && (rf.confirmPassword.errors?.required)"
+                            class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> Confirm
+                            ce champ est obligatoire
+                          </div>
+                          <div *ngIf="registerFormSubmitted && (rf.confirmPassword.errors?.mustMatch)"
+                               class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            Passwords must
+                            match
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="form-group text-center space-20">
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+
+                          <label class="form-control-label">Adresse</label>
+                          <input type="text" formControlName="adresse" class="form-control mb-2"
+                                 placeholder="Adresse"
+                                 [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.adresse.invalid, 'is-valid': registerFormSubmitted && !rf.adresse.invalid }"
+                                 required>
+                          <div
+                            *ngIf="registerFormSubmitted && (rf.adresse.invalid || rf.adresse.errors?.required)"
+                            class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> User
+                            Adresse est obligatoire
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="form-group">
+                          <label class="form-control-label">Nom Entreprise</label>
+                          <input type="text" formControlName="nom_Entreprise" class="form-control mb-2"
+                                 placeholder="Nom_Entreprise"
+                                 [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.nom_Entreprise.invalid, 'is-valid': registerFormSubmitted && !rf.nom_Entreprise.invalid }"
+                                 required>
+                          <div
+                            *ngIf="registerFormSubmitted && (rf.nom_Entreprise.invalid || rf.nom_Entreprise.errors?.required)"
+                            class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>
+                            Ce Champ est obligatoire
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br><br>
+                    <div class="form-group text-center">
                       <button uiSref="personal" type="button" class="btn btn-secondary mr-1" awPreviousStep>
                                     <span style="margin-right:10px;">
                                         <i class="ft-chevron-left"></i>
                                     </span> Previous
                       </button>
-
-                      <button uiSref="work" type="button"  [disabled]="addform.controls['password'].invalid || addform.controls['adresse'].invalid || addform.controls['nom_Entreprise'].invalid " class="btn btn-info" awNextStep>
+                      <button uiSref="work" type="button"
+                              [disabled]="addform.controls['password'].invalid || addform.controls['adresse'].invalid || addform.controls['nom_Entreprise'].invalid "
+                              class="btn btn-primary" awNextStep>
                         Next
                         <span style="margin-left:10px;">
                                         <i class="ft-chevron-right"></i>
                                     </span>
                       </button>
                     </div>
+
                   </aw-wizard-step>
                   <aw-wizard-step [stepTitle]="'Step 3'"
                                   [navigationSymbol]="{ symbol: '&#xf0ac;', fontFamily: 'FontAwesome' }">
@@ -175,33 +192,40 @@
                         <div class="row">
                           <div class='col-sm-12 col-sm-6'>
                             <div class="form-group">
-                              <label class="form-control-label" for="Activite_Entreprise">Activité Entreprise</label>
-                              <input class="form-control input-md" formControlName="activite_Entreprise" required id="Activite_Entreprise"
-                                     name="activite_Entreprise" type="text" placeholder="Enter Your Activité_Entreprise">
+                              <label class="form-control-label" required> </label>
+                              <select formControlName="activite_Entreprise" class='form-control'
+                                      [ngClass]="{ 'is-invalid': registerFormSubmitted && rf.activite_Entreprise.invalid, 'is-valid': registerFormSubmitted && !rf.activite_Entreprise.invalid }">
+                                <option value="" selected="" [disabled]>Select Activité Entreprise</option>
+                                <option value="Activité Commerciale">Activité Commerciale</option>
+                                <option value="Activité Industrielle">Activité Industrielle</option>
+                                <option value="Activité Artisinale">Activité Artisinale</option>
+                                <option value="Autres">Autres..</option>
+                              </select>
 
                             </div>
                             <div class="form-group">
                               <div class='col-sm-12 col-sm-6'>
                                 <select id="users-edit-role" class="form-control" required formControlName="role">
                                   <option ngValue="role.user" selected [disabled]>Select Role</option>
-                                  <option *ngFor="let role of roles">{{role.Role}}</option>
+                                  <option *ngFor="let role of roles" >{{role.Role}}</option>
                                 </select>
                               </div>
                             </div>
                           </div>
                           <div class='col-12 col-sm-6'>
                             <div class="form-group">
-                              <label class="form-control-label" for="taille_Entreprise">Taille Entreprise</label>
-                              <input class="form-control input-md" formControlName="taille_Entreprise" required id="Taille_Entreprise"
-                                     name="taille_Entreprise" type="text" placeholder="Enter Your Taille_Entreprise">
-
+                              <label class="form-control-label">Taille Entreprise</label>
+                              <input class="form-control input-md" formControlName="taille_Entreprise" required
+                                     id="taille_Entreprise"
+                                     type="text" placeholder="Enter Your Taille_Entreprise">
                             </div>
                           </div>
 
                           <div class='col-12 col-sm-6'>
                             <div class="form-group">
                               <label class="form-control-label" for="code_Fiscale">Code Fiscale</label>
-                              <input class="form-control input-md "formControlName="code_Fiscale"  required id="Code_Fiscale" name="code_Fiscale"
+                              <input class="form-control input-md " formControlName="code_Fiscale" required
+                                     id="Code_Fiscale" name="code_Fiscale"
                                      type="text" placeholder="Enter Your Code_Fiscale">
 
                             </div>
@@ -216,7 +240,7 @@
                                                 <i class="ft-chevron-left"></i>
                                             </span> Previous
                       </button>
-                      <button type="submit" class="btn btn-primary"  >Register
+                      <button type="submit" class="btn btn-primary">Register
                         <span style="margin-left:10px;"></span>
                       </button>
                     </div>

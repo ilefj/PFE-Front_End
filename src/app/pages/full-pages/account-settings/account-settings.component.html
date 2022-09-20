@@ -74,12 +74,12 @@
                     </div>
                   </div>
                   <div class="col-12 form-group">
-                    <label for="name">Name</label>
+                    <label for="prenom">prenom</label>
                     <div class="controls">
-                      <input type="text" formControlName="name" class="form-control" placeholder="Name"
-                             [ngClass]="{ 'is-invalid': generalFormSubmitted && gf.name.invalid, 'is-valid': generalFormSubmitted && !gf.name.invalid }"
+                      <input type="text" formControlName="prenom" class="form-control" placeholder="Name"
+                             [ngClass]="{ 'is-invalid': generalFormSubmitted && gf.prenom.invalid, 'is-valid': generalFormSubmitted && !gf.prenom.invalid }"
                              required>
-                      <div *ngIf="generalFormSubmitted && (gf.name.invalid || gf.name.errors?.required)"
+                      <div *ngIf="generalFormSubmitted && (gf.prenom.invalid || gf.prenom.errors?.required)"
                            class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
                         required</div>
                     </div>
