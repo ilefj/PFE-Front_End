@@ -139,8 +139,8 @@
                             <div class="form-group">
                               <div class='col-sm-12 col-sm-6'>
                                 <select id="users-edit-role" class="form-control" required formControlName="role">
-                                  <option value="" selected="">Select Role</option>
-                                  <option *ngFor="let role of roles">{{role.Role}}</option>
+                                  <option ngValue="role.user" selected [disabled]>Select Role</option>
+                                  <option *ngFor="let role of roles" >{{role.Role}}</option>
                                 </select>
                               </div>
                             </div>

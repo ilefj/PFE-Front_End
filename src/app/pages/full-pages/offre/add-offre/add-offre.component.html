@@ -1,3 +1,4 @@
+
 <section id="ngx " class=" row mt-3  justify-content-center " xmlns="http://www.w3.org/1999/html">
   <div class="card col-md-12 ">
     <div class="card-content">
@@ -80,16 +81,16 @@
                       </div>
 
                       <div class="form-group text-center">
-                        <button uiSref="work" type="submit" class="btn btn-primary" [disabled]="registerForm.controls['titre'].invalid || registerForm.controls['description'].invalid || registerForm.controls['reference'].invalid || registerForm.controls['dateCreation'].invalid|| registerForm.controls['domaineId'].invalid "
+                        <button uiSref="work" type="button" class="btn btn-primary"
                                 awNextStep>
                           Next
                           <span style="margin-left:10px;">
-                              <i class="ft-chevron-right"></i></span>
+                                <i class="ft-chevron-right"></i></span>
                         </button>
                       </div>
                     </div>
                   </div>
-
+<!--                  [disabled]="registerForm.controls['titre'].invalid || registerForm.controls['description'].invalid || registerForm.controls['reference'].invalid || registerForm.controls['dateCreation'].invalid|| registerForm.controls['domaineId'].invalid "-->
                 </aw-wizard-step>
                 <aw-wizard-step [stepTitle]="'Step 2'"
                                 [navigationSymbol]="{ symbol: '&#xf0b1;', fontFamily: 'FontAwesome' }">
@@ -97,44 +98,157 @@
 
                   <br/>
                   <div class='row'>
-                    <div class='col-12 '>
-                      <div class="row">
-                        <div class='col-12 col-sm-6'>
-                          <div class="row">
+                    <div class='col-12'>
+                      <div class="form-group">
+                        <div formArrayName="employe">
+                          <ng-container *ngFor="let p of employe.controls; index as i" [formGroupName]="i">
+                            <div class="form-row">
+                              <div class="col-md-6 col-12 mr-1">
+                                <label class="form-control-label"> Selectionner un employé</label>
+                                <select class='form-control' required formControlName="emp"  >
+                                  <!--                                        <option selected disabled>Selectionner employer</option>  (change)="sendEmployerId()"-->
+                                  <option *ngFor="let employe of employes " ngValue="{{employe.id}}">{{employe.nom}}</option>
+                                </select>
+                              </div>
+                              <div class="col-md-6 col-12 mr-1">
+                                <label class="form-control-label"> Nbre_H_Siege</label>
+                                <input type="text" formControlName="Nbre_H_Siege" class="form-control mb-2" value="" >
+                              </div>
+                              <div class="col-md-5 col-12 mr-1">
+                                <label class="form-control-label"> Nbre_H_Site</label>
+                                <input type="text" formControlName="Nbre_H_Site" class="form-control mb-2" value="" >
+                              </div>
 
-                            <div class='col-sm-12 col-sm-6'>
-                              <label class="form-control-label">Select Employé</label>
-                              <select class='form-control' required formControlName="Employe" (change)="sendEmployerId()" >
-                                <option *ngFor="let employe of employes " value="{{employe.id}}">{{employe.nom}}</option>
-                              </select>
+
+                              <div class="col-4">
+                                <button class="btn btn-sm btn-primary "  type="button" (click)="addCretaire()">+ Ajouter</button>
+                              </div>
+                              <div class="col-lg-8">
+
+                                <button class="btn btn-sm btn-light " type="button" (click)="DeleteSelected(i)">Delete</button>
+                              </div>
+
                             </div>
-                          </div>
-                        </div>
-                      <div class='col-12 col-sm-6'>
-                          <div class="form-group">
-                            <label class="form-control-label">Salaire</label>
 
-                            <input type="text" formControlName="salaire" class="form-control mb-2"
-                                  [value]="SalaireEmployer">
-                          </div>
-                        </div>
+                          </ng-container>
 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!--                  <div class='row'>-->
+                  <!--                    <div class='col-12 '>-->
+                  <!--                      <div class="row">-->
+                  <!--                        <div class='col-12 col-sm-6'>-->
+                  <!--                          <div [formGroup]="orderForm">-->
+                  <!--                            <div formArrayName="items"-->
+                  <!--                                 *ngFor="let item of orderForm.get('items').controls; let i = index;">-->
+                  <!--                              <div [formGroupName]="i">-->
+                  <!--                                <div class="row">-->
+                  <!--                                  <div class='col-6 col-sm-6'>-->
+                  <!--                                    <label class="form-control-label">Select Employé</label>-->
+                  <!--                                    <select class='form-control' required formControlName="Employe" (change)="sendEmployerId()" id="select{{i}}">-->
+                  <!--                                      <option *ngFor="let employe of employes " [ngvalue]="{{employe}}">{{employe.nom}}</option>-->
+                  <!--                                    </select>-->
+                  <!--                                  </div>-->
+
+                  <!--                                  <div class='col-6 col-sm-6'>-->
+                  <!--                                    <div class="form-group">-->
+                  <!--                                      <label class="form-control-label">Salaire</label>-->
+                  <!--                                      <input type="text" formControlName="salaire" class="form-control mb-2"-->
+                  <!--                                             [value]="{{}}">-->
+                  <!--                                    </div>-->
+                  <!--                                  </div>-->
+                  <!--                                </div>-->
+                  <!--                              </div>-->
+
+                  <!--                              &lt;!&ndash;   ajout des R.H&ndash;&gt;-->
+                  <!--                              Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }}-->
+                  <!--                            </div>-->
+                  <!--                          </div>-->
+                  <!--                          <button (click)="addItem()">Add</button>-->
+                  <!--                        </div>-->
+                  <!--                      </div></div>-->
+                  <!--                  </div>-->
+                  <br>
+                  <div class="form-group text-center space-30">
+                    <button uiSref="work" type="submit" class="btn btn-secondary mr-1" awPreviousStep>
+                                              <span style="margin-right:10px;">
+                                                  <i class="ft-chevron-left"></i>
+                                              </span> Previous
+                    </button>
+
+                    <button uiSref="work" type="button" class="btn btn-primary"
+                            awNextStep>
+                      Next
+                      <span style="margin-left:10px;">
+                                          <i class="ft-chevron-right"></i>
+                                      </span>
+                    </button>
+                  </div>
+
+                </aw-wizard-step>
+                <aw-wizard-step [stepTitle]="'Step 3'"
+                                [navigationSymbol]="{ symbol: '&#xf0b1;', fontFamily: 'FontAwesome' }">
+                  <h4 class="head text-center">Ajout Produit</h4>
+
+                  <br/>
+                  <div class='row'>
+                    <div class='col-12'>
+                      <div class="form-group">
+                        <div formArrayName="produit">
+                          <ng-container *ngFor="let p of produit.controls; index as i" [formGroupName]="i">
+                            <div class="form-row">
+                              <div class="col-md-5 col-12 mr-1">
+                                <label class="form-control-label"> Nom Produit</label>
+                                <input type="text" formControlName="nom_Prod" class="form-control mb-2" value="" >
+                              </div>
+                              <div class="col-md-5 col-12 mr-1">
+                                <label class="form-control-label"> Description Produit</label>
+                                <input type="text" formControlName="description" class="form-control mb-2" value="" >
+                              </div>
+                              <div class="col-md-5 col-12 mr-1">
+                                <label class="form-control-label">Quantité</label>
+                                <input type="text" formControlName="Quantite" class="form-control mb-2" value="" >
+                              </div> <div class="col-md-5 col-12 mr-1">
+                                <label class="form-control-label">Prix Unitaire </label>
+                                <input type="text" formControlName="prix_Unitaire" class="form-control mb-2" value="" >
+                              </div>
+                              <div class="col-md-5 col-12 mr-1">
+                                <label class="form-control-label"> Marge %</label>
+                                <input type="text" formControlName="marge" class="form-control mb-2" value="" >
+                              </div>
+                                <div class="col-md-5 col-12 mr-1">
+                                <label class="form-control-label"> Remise %</label>
+                                <input type="text" formControlName="remise" class="form-control mb-2" value="" >
+                              </div>
+                              <div class="col-md-6">
+                                <button class="btn btn-sm btn-primary"  type="button" (click)="addProd()">+ Ajouter</button>
+                              </div>
+                              <br>
+                              <div class="col-md-8">
+                                <button class="btn btn-sm btn-light " type="button" (click)="DeleteSelectedProd(i)">Delete</button>
+                              </div>
+                            </div>
+
+                          </ng-container>
+
+                        </div>
                       </div>
                     </div>
                   </div>
                   <br>
                   <div class="form-group text-center space-30">
                     <button uiSref="work" type="button" class="btn btn-secondary mr-1" awPreviousStep>
-                                            <span style="margin-right:10px;">
-                                                <i class="ft-chevron-left"></i>
-                                            </span> Previous
+                                              <span style="margin-right:10px;">
+                                                  <i class="ft-chevron-left"></i>
+                                              </span> Previous
                     </button>
 
-                    <button uiSref="work" type="submit"  class="btn btn-info" awNextStep>
-                      Next
-                      <span style="margin-left:10px;">
-                                        <i class="ft-chevron-right"></i>
-                                    </span>
+                    <button  type="submit"  class="btn btn-primary">
+                      Enregistrer
                     </button>
                   </div>
 
@@ -148,4 +262,5 @@
     </div>
   </div>
 </section>
+
 

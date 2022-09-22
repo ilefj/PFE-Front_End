@@ -41,6 +41,8 @@ import { AddEmployeComponent } from './employe/add-employe/add-employe.component
 import { EditEmployeComponent } from './employe/edit-employe/edit-employe.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { DetailOffreComponent } from './offre/detail-offre/detail-offre.component';
+import { ProduitComponent } from './produit/produit.component';
+import { ServiceComponent } from './service/service.component';
 
 
 @NgModule({
@@ -86,6 +88,8 @@ import { DetailOffreComponent } from './offre/detail-offre/detail-offre.componen
     EditEmployeComponent,
     ResourcesComponent,
     DetailOffreComponent,
+    ProduitComponent,
+    ServiceComponent,
 
   ],
 })

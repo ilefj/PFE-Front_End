@@ -10,13 +10,13 @@ export const ROUTES: RouteInfo[] = [
   //  ]
   // },
   { path: '/dashboard/dashboard2', title: 'Dashboard Admin', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [],owner:'Admin'},
-   { path: '/dashboard/dashboard2', title: 'Dashboard User', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [],owner:'User' },
+   { path: '/dashboard/dashboard2', title: 'Dashboard User', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [],owner:'Responsable_Entreprise' },
   {
     path: '', title: 'Gestion des Offres', icon: 'ft-bar-chart-2', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
     submenu: [
       { path: 'offres', title: 'Les Offres', icon: 'ft-airplay' , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
       // { path: '/Offre-edit', title: 'Edit', icon: 'ft-arrow-right submenu-icon', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
-    ],owner:'User'
+    ],owner:'Responsable_Entreprise'
 
   },
   {
@@ -24,16 +24,15 @@ export const ROUTES: RouteInfo[] = [
     submenu: [
       { path: 'Employes', title: 'Gestion des employés', icon: 'icon-list' , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
       // { path: '/Offre-edit', title: 'Edit', icon: 'ft-arrow-right submenu-icon', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
-    ],owner:'User'
+    ],owner:'Responsable_Entreprise'
 
   },
   {
-    path: 'Ressources', title: 'Gestion de R.M', icon: 'ft-bar-chart-2', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
+    path: '', title: 'Gestion de R.M', icon: 'icon-wrench', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
     submenu: [
-      // { path: 'Employes', title: 'Gestion des employés', icon: 'ft-airplay' , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-      // { path: '/Offre-edit', title: 'Edit', icon: 'ft-arrow-right submenu-icon', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
-    ],owner:'User'
-
+      { path: 'Produit', title: 'Gestion des Produits', icon: 'icon-list' , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+       { path: 'Service', title: 'Service', icon: 'icon-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
+    ],owner:'Responsable_Entreprise'
   },
   /*{ path: '/inbox', title: 'Email', icon: 'ft-mail', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
   { path: '/chat', title: 'Chat', icon: 'ft-message-square', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
@@ -207,7 +206,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: [
       { path: '/roles-list', title: 'List des Roles', icon: 'ft-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
       /* { path: '/roles-edit', title: 'Edit', icon: 'ft-arrow-right submenu-icon', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }*/
-    ],owner:'User'
+    ],owner:'Responsable_Entreprise'
   },
   {
     path: '', title: ' Domaine Management', icon: 'ft-activity', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,

@@ -26,11 +26,8 @@ export class OffreService {
       titre: form.titre,
       description: form.description,
       reference: form.reference,
-      dateCreation:form.dateCreation,
       UserId:userInfo.id,
       domaineId:form.domaineId,
-      Employe:form.Employe,
-
     };
     console.log("Body Services",body);
     const headers = new HttpHeaders({
@@ -39,10 +36,52 @@ export class OffreService {
     return this.httpClient.post<ResponseModel>( 'https://localhost:7268/api/Offre/AddOffre',body).pipe(
       map((res)=> {
           return res ;
+        console.log(res);
         }
       )
     );
   }
+
+  addOffreEmp(form : any , id : string) {
+    let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${userInfo?.token}`,
+    });
+    return this.httpClient.post<ResponseModel>( `https://localhost:7268/api/Offre_EmployeControleur/AddOffreEmployee/${id}`,form).pipe(
+      map((res)=> {
+          return res ;
+          console.log(res);
+        }
+      )
+    );
+  }
+  addProduit(form : any , id : string) {
+    let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${userInfo?.token}`,
+    });
+    return this.httpClient.post<ResponseModel>( `https://localhost:7268/api/Produit/AddProduitOffre/${id}`,form).pipe(
+      map((res)=> {
+          return res ;
+          console.log(res);
+        }
+      )
+    );
+  }
+  addUpdateOffre2(id : string) {
+    let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${userInfo?.token}`,
+    });
+    return this.httpClient.put<ResponseModel>( `https://localhost:7268/api/Offre/UpdateOffre2/${id}`,{headers : headers}).pipe(
+      map((res)=> {
+        console.log(res);
+          return res ;
+        }
+      )
+    );
+  }
+
    GetAllOffres(){
     let userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const headers = new HttpHeaders({
@@ -104,7 +143,7 @@ export class OffreService {
           if (res.responseCode == ResponseCode.OK) {
             console.log(res);
             if (res.dateSet) {
-              this.offre = new Offre(res.dateSet.id, res.dateSet.titre, res.dateSet.description, res.dateSet.reference,res.dateSet.dateCreation, res.dateSet.domaine.id,res.dateSet.Employe.id,res.dateSet.User);
+              this.offre = new Offre(res.dateSet.id, res.dateSet.titre, res.dateSet.description, res.dateSet.reference,res.dateSet.dateCreation, res.dateSet.domaine.id,res.dateSet.Employe,res.dateSet.User);
             }
             console.log(this.offre);
           }
@@ -112,9 +151,20 @@ export class OffreService {
         })
       );
   }
+
   GetOffreId (id: string)  {
-    return this.httpClient.get(this.url + `/GetById/${id}`);
+    return this.httpClient.get<ResponseModel>(this.url + `/GetOffreById/${id}`).pipe(
+      map((res) =>{
+        if(res.responseCode == 1){
+          console.log(res);
+          return res ;
+        }else{
+          console.log(res.responseMessage);
+        }
+      })
+    );
   }
+
   GetOffreByIdUser(id : string) {
     return this.httpClient
       .get<ResponseModel>(this.url + `/GetOffreByIdUser/${id}`).pipe(
@@ -133,5 +183,22 @@ export class OffreService {
         })
       );
 
+  }
+
+  public getOffreEmploesBIdOffre(id : string){
+    let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${userInfo?.token}`,
+    });
+    return this.httpClient.get<ResponseModel>(`https://localhost:7268/api/Offre_EmployeControleur/GetOffreEmploye/${id}`).pipe(
+      map((res) =>{
+        if(res.responseCode == 1){
+          console.log(res.dateSet);
+          return res.dateSet ;
+        }else{
+          console.log(res.responseMessage);
+        }
+      })
+    );
   }
 }

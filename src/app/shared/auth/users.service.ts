@@ -73,16 +73,16 @@ export class UsersService {
 
   public updateUser(id: string,form:any){
     const body = {
-      username: form.username,
-      prenom: form.prenom,
-      adresse: form.adresse,
-      nom_Entreprise:form.nom_Entreprise,
-      email: form.email,
-      telephone: form.telephone,
-      activite_Entreprise:form.activite_Entreprise,
-      taille_Entreprise:form.taille_Entreprise,
-      code_Fiscale:form.code_Fiscale,
-      Role: form.role,
+      UserName: form.username,
+      Prenom: form.prenom,
+      Adresse: form.adresse,
+      Nom_Entreprise:form.nom_Entreprise,
+      Email: form.email,
+      Telephone: form.telephone,
+      Activite_Entreprise:form.activite_Entreprise,
+      Taille_Entreprise:form.taille_Entreprise,
+      Code_Fiscale:form.code_Fiscale,
+      Role: form.Role,
       Password: '',
     };
     console.log(body);

@@ -42,7 +42,7 @@ export class ListEmployeComponent implements OnInit {
 
     // filter our data
     const temp = this.tempData.filter(function (d) {
-      return d.titre.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.nom.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
     // update the rows

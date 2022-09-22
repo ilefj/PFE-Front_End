@@ -20,7 +20,7 @@ export class AccountSettingsComponent implements OnInit {
 
   generalForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
-    name: new FormControl('', [Validators.required]),
+    prenom: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required])
   });
 
@@ -48,8 +48,8 @@ export class AccountSettingsComponent implements OnInit {
     let userInfo = JSON.parse(localStorage.getItem('userInfo'));
     this.logedUser = userInfo ;
     console.log(this.logedUser);
-    this.generalForm.controls['username'].setValue(userInfo.userName);
-    this.generalForm.controls['name'].setValue(userInfo.fullName);
+    this.generalForm.controls['username'].setValue(userInfo.username);
+    this.generalForm.controls['prenom'].setValue(userInfo.prenom);
     this.generalForm.controls['email'].setValue(userInfo.email);
     this.infoForm.controls['bdate'].setValue(userInfo.birthDate);
     this.infoForm.controls['adresse'].setValue(userInfo.adresse);
@@ -82,24 +82,26 @@ export class AccountSettingsComponent implements OnInit {
     }
     let userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const body = {
-      Fullname: this.generalForm.controls['name'].value,
-      Username: this.generalForm.controls['username'].value,
-      Email: userInfo.email,
-      PhoneNumber: userInfo.phoneNumber,
-      Adresse: userInfo.adresse,
-      Gender : userInfo.gender,
-      BirthDate: userInfo.birthdate ,
-      Facebook: userInfo.facebook,
-      Google: userInfo.google,
-      Linkedin: userInfo.linkedin,
-      LastTimeLogedIn: userInfo.lastTimeLogedIn ,
-      Role: userInfo.role,
-      Password : "",
+      username: this.generalForm.controls['username'].value,
+      prenom: this.generalForm.controls['prenom'].value,
+      adresse: userInfo.adresse,
+      nom_Entreprise:userInfo.nom_Entreprise,
+      email: userInfo.email,
+      telephone: userInfo.telephone,
+      activite_Entreprise:userInfo.activite_Entreprise ,
+      taille_Entreprise:userInfo.taille_Entreprise,
+      code_Fiscale:userInfo.code_Fiscale,
+      role:userInfo.role,
+      Password: '',
     };
+
+
+    console.log(body)
     this.userService.updateUser(userInfo.id,body).subscribe((data) =>{
       if(data.responseCode == 1){
-        userInfo.fullname = data.dateSet.fullname ;
-        userInfo.username = data.dateSet.username;
+        console.log(data.dateSet)
+        userInfo.username = data.dateSet.username ;
+        userInfo.prenom = data.dateSet.prenom;
         localStorage.setItem("userInfo",JSON.stringify(userInfo));
         console.log("user up to date");
         this.toastr.success('User is uptodate!', 'Success');

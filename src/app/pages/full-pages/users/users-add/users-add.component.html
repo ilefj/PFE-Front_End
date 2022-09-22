@@ -44,11 +44,15 @@
                   </div>
 
                   <div class="form-group">
-                    <select id="users-edit-role" class="form-control" required formControlName="role">
-                      <option value="" selected="">Select Role</option>
-                      <option *ngFor="let role of roles" >{{role.Role}}</option>
-                    </select>
+                    <input type="text "class="form-control mb-2" placeholder="Role" formControlName="role" disabled>Responsable Entreprise
+
                   </div>
+<!--                  <div class="form-group">-->
+<!--                    <select id="users-edit-role" class="form-control" required formControlName="role">-->
+<!--                      <option value="" selected="">Select Role</option>-->
+<!--                      <option *ngFor="let role of roles" >{{role.Role}}</option>-->
+<!--                    </select>-->
+<!--                  </div>-->
 
                   <div class="form-group">
                     <input type="email" formControlName="email" class="form-control mb-2" placeholder="Email"
