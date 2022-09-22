@@ -58,9 +58,9 @@
               <td>{{o.marge_nette| number : '2.1'}}</td>
               <td>32%</td>
             </tr>
-            <tr id="bold1">
+            <tr id="bold">
               <td >Totale</td>
-              <td>{{offre.qte_H_Siege_Site}}</td>
+              <td>{{offre.qte_H_Siege_Site| number : '1.0'}}</td>
               <td>{{offre.total_Prix_Revient| number : '2.1'}}</td>
               <td>{{offre.total_Prix_Proposition| number : '2.1'}}</td>
               <td>{{offre.total_Cout_Offre| number : '2.1' }}</td>
@@ -126,5 +126,137 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="card col-md-12 ">
+    <div class="card-content">
+      <div class="card-body">
+        <div class="card-body">
+          <div id="htmlData">
+              <div>                  
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <b>ETUDE DE L'OFFRE</b>
+                  <br>
+                  <b>Nom Entreprise:
+                    {{offre.user.nom_Entreprise}}
+                  </b><br>
+                  <b>Adresse: {{offre.user.adresse}}</b><br>
+                  <b>Telephone: {{offre.user.phoneNumber}}</b><br>
+                  <b>Email: {{offre.user.email}}</b>
+                  </div>
+              
+              <div>
+                  <br><br>
+                  &nbsp;&nbsp;&nbsp;&nbsp; <p>Madame/ Monsieur, </p><br>
+                  <p>
+                      En se basant sur les données techniques fournies par vos soins, nous avons le plaisir de vous communiuqer
+                  ci-joint notre meilleur offre technique et financière pour la réalisation du projet en question.
+                  </p><br>
+                  
+                  &nbsp;&nbsp;&nbsp;&nbsp; <p>
+                      Dans l'attente de votre réponse, veuillez agréer Madame/ Monsieur nos salutation les plus distinguées.
+                  </p>
+
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr class="centertext">
+                              <th rowspan="2">RUBRIQUES</th>
+                              <th>Totale DT</th>
+                          </tr>
+                      </thead>
+
+                      <tbody>
+                          <tr>
+                              <th>Assistance du main d'oeuvre</th>
+                              <td class="text-center">{{offre.total_Prix_Proposition| number : '2.1'}}</td>
+                          </tr>
+                          
+                          <tr>
+                              <th>Fourniture des équipements du projets</th>
+                              <td class="text-center">{{offre.total_HT_Prod | number : '2.1'}}</td>
+                          </tr>
+                          <tr>
+                              <th>Totalité d'offre</th>
+                              <td class="text-center">{{(offre.total_Prix_Proposition + offre.total_HT_Prod)| number : '2.1'}}</td>
+                          </tr>
+
+                      </tbody>
+                  </table>
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <table class="table table-bordered">
+                      <tbody>
+                          <tr>
+                              <th rowspan="2">TVA</th>
+                              <td class="text-center">19%</td>
+                          </tr>
+
+                      </tbody>
+                  </table>
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <table class="table table-bordered">
+                      <tbody>
+                          <tr>
+                              <th rowspan="2">TOTAL TTC</th>
+                              
+                              <td class="text-center">{{((offre.total_Prix_Proposition + offre.total_HT_Prod)*1.19)| number : '2.1' }}</td>
+                          </tr>
+
+                      </tbody>
+                  </table>
+
+                  <br>
+                  <br>    
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <b><u>N.B</u></b><br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;Cette offre est considérrée contractuelle et pose.</p>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<p>1. <b>Validité de l'offre:</b> <i>30 Jours</i> à partie de la date de réception de la
+                      présente
+                  </p>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<p>2. <b>Conditions financière:</b> <br></p>
+                  <ul>
+                      <li>Paiment d'un acompte de <b>60% du montant global TTC</b> à la commande</li>
+                      <li>Paiment de <b>30% du montant global TTC</b> à la livraison des équipements</li>
+                      <li>Paiment <b>10% du montant global TTC</b> à la mise en service et réception du projet
+                      </li>
+                  </ul>
+                  <p>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <b><u>Garanties:</u></b> La société <b>{{offre.user.nom_Entreprise}}</b> garantie la totalité des produits et du
+                      service fournis pendant
+                      une année à partir de la date de réception.<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      Nous restons à votre entière disposition pour tout complément d'informations.
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                  </p><br><br><p>Bonne réception</p>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>    
+    <div class="text-right">
+      <button type="button" (click)="ClickPDF()" class="btn btn-primary">
+          Imprimer
+        <i><img src="assets/img/icons8-print-48.png" width="30"></i>
+      </button>
+
+  </div>
   </div>
 </section>

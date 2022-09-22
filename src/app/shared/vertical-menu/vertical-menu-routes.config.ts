@@ -201,13 +201,13 @@ export const ROUTES: RouteInfo[] = [
       // { path: '/users-edit', title: 'Edit', icon: 'ft-arrow-right submenu-icon', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
     ],owner:'Admin'
   },
-  {
+ /* {
     path: '', title: 'Roles Management' , icon: 'ft-briefcase', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
     submenu: [
       { path: '/roles-list', title: 'List des Roles', icon: 'ft-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
       /* { path: '/roles-edit', title: 'Edit', icon: 'ft-arrow-right submenu-icon', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }*/
-    ],owner:'Responsable_Entreprise'
-  },
+    // ],owner:'Responsable_Entreprise'
+  // },
   {
     path: '', title: ' Domaine Management', icon: 'ft-activity', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
     submenu: [
