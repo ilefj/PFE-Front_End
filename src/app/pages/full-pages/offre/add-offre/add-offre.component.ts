@@ -81,8 +81,7 @@ export class AddOffreComponent implements OnInit {
               next:(res4)=>{
                 console.log(res4);
 
-              }}
-            )
+
             this.offreService.addUpdateOffre2(res.dateSet).subscribe({
               next:(res3)=>{
                 console.log(res3);
@@ -91,6 +90,8 @@ export class AddOffreComponent implements OnInit {
                 this.router.navigate(['/offres']);
               }
             })
+              }}
+            )
           }
         })
       }, error: (err) => {
@@ -158,12 +159,12 @@ export class AddOffreComponent implements OnInit {
   }
   addProd(): void {
     this.produit.push(new FormGroup({
-      nom_Produit: new FormControl(),
-      Description_Prod: new FormControl(),
+      nom_Prod: new FormControl(),
+      description: new FormControl(),
       Quantite: new FormControl(),
-      Prix_Unit: new FormControl(),
-      MargePerPen: new FormControl(),
-      RemisePerPen: new FormControl(),
+      prix_Unitaire: new FormControl(),
+      marge: new FormControl(),
+      remise: new FormControl(),
     }));
 
   }

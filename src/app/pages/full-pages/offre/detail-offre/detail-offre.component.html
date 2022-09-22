@@ -30,7 +30,95 @@
 
           <hr>
           <h4 class="text-primary">Ressources de l'offre Details</h4>
+          <br>
+          <h5 class="text-primary" >La liste des employés de l'offre</h5>
 
+          <table class=" table table-sm">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nom Employé</th>
+              <th scope="col">Prix Revient</th>
+              <th scope="col">Prix Proposition</th>
+              <th scope="col">Coût</th>
+              <th scope="col">FG</th>
+              <th scope="col">Marge Brûte</th>
+              <th scope="col" colspan="2">Marge Net</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let o of listEmployees ; let i = index">
+              <td>{{i}}</td>
+              <td>{{o.employe.nom }}</td>
+              <td>{{o.prix_Revient | number : '3.1-3'}}</td>
+              <td>{{o.prix_Proposition | number : '3.1-3'}}</td>
+              <td>{{o.coutParEmp | number : '3.1-3'}}</td>
+              <td>70 %</td>
+              <td>{{o.marge_Brut | number : '3.1-3'}}</td>
+              <td>{{o.marge_nette | number : '3.1-3'}}</td>
+              <td>32%</td>
+            </tr>
+            <tr>
+              <td>Totale</td>
+              <td>{{offre.qte_H_Siege_Site | number : '3.1-3'}}</td>
+              <td>{{offre.total_Prix_Revient | number : '3.1-3'}}</td>
+              <td>{{offre.total_Prix_Proposition | number : '3.1-3'}}</td>
+              <td>{{offre.total_Cout_Offre | number : '3.1-3'}}</td>
+              <td>70 %</td>
+              <td>{{offre.total_Marge_Brut | number : '3.1-3'}}</td>
+              <td>{{offre.total_Marge_Nette | number : '3.1-3'}}</td>
+              <td>32%</td>
+            </tr>
+            </tbody>
+          </table> <br>
+          <h5 class="text-primary" >La liste de produit de l'offre</h5>
+
+          <table class="table table-sm">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nom Produit</th>
+              <th scope="col">Quantité</th>
+              <th scope="col">Prix Unitaire</th>
+              <th scope="col">Marge %</th>
+              <th scope="col">Remise %</th>
+              <th scope="col">Aprés Remise</th>
+              <th scope="col">Aprés Marge</th>
+              <th scope="col">Produit HT</th>
+              <th scope="col">Produit TTC</th>
+              <th scope="col">Marge Net Finale</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let o of offre.produits ; let i = index">
+              <td>{{i}}</td>
+              <td>{{o.nom_Prod }}</td>
+              <td>{{o.prix_Unitaire}}</td>
+              <td>{{o.quantite}}</td>
+              <td>{{o.marge }}</td>
+              <td>{{o.remise }}</td>
+              <td>{{o.apres_Marge }}</td>
+              <td>{{o.apres_Remise }}</td>
+              <td>{{o.produit_HT}}</td>
+              <td>{{o.produit_TTC}}</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Totale</td>
+              <td>{{offre.total_Revient_Prod }}</td>
+              <td></td>
+              <td></td>
+              <td>{{offre.produits.marge }}</td>
+              <td>{{offre.produits.remise }}</td>
+              <td></td>
+              <td></td>
+              <td>{{offre.total_HT_Prod}}</td>
+              <td>{{offre.total_TTC_Prod}}</td>
+              <td>{{offre.total_Marge_Nette_Prod}}</td>
+
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

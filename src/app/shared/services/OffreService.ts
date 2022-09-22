@@ -151,9 +151,20 @@ export class OffreService {
         })
       );
   }
+
   GetOffreId (id: string)  {
-    return this.httpClient.get(this.url + `/GetById/${id}`);
+    return this.httpClient.get<ResponseModel>(this.url + `/GetOffreById/${id}`).pipe(
+      map((res) =>{
+        if(res.responseCode == 1){
+          console.log(res);
+          return res ;
+        }else{
+          console.log(res.responseMessage);
+        }
+      })
+    );
   }
+
   GetOffreByIdUser(id : string) {
     return this.httpClient
       .get<ResponseModel>(this.url + `/GetOffreByIdUser/${id}`).pipe(
@@ -172,5 +183,22 @@ export class OffreService {
         })
       );
 
+  }
+
+  public getOffreEmploesBIdOffre(id : string){
+    let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${userInfo?.token}`,
+    });
+    return this.httpClient.get<ResponseModel>(`https://localhost:7268/api/Offre_EmployeControleur/GetOffreEmploye/${id}`).pipe(
+      map((res) =>{
+        if(res.responseCode == 1){
+          console.log(res.dateSet);
+          return res.dateSet ;
+        }else{
+          console.log(res.responseMessage);
+        }
+      })
+    );
   }
 }
