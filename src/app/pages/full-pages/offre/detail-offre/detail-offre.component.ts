@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {OffreService} from "../../../../shared/services/OffreService";
 import {ActivatedRoute, Router} from "@angular/router";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
-class Offer {
+class Offre {
   id: string;
   titre: string;
   reference: string;
@@ -29,6 +31,7 @@ export class DetailOffreComponent implements OnInit {
   offreid: any;
   offre: any;
   listEmployees : any ;
+
   constructor(private offreService: OffreService, private router: Router, private route: ActivatedRoute) {
   }
   ngOnInit(): void {
@@ -44,7 +47,9 @@ export class DetailOffreComponent implements OnInit {
         next: (res) => {
           this.offre = res.dateSet;
           console.log("Offre : "+this.offre)
+           
         }
+
       });
   }
 
@@ -56,5 +61,16 @@ export class DetailOffreComponent implements OnInit {
       }
     })
   }
-
+  public ClickPDF(): void {
+    let DATA: any = document.getElementById('htmlData');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 190;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save(this.offre.titre+'.pdf');
+    });
+  }
 }
