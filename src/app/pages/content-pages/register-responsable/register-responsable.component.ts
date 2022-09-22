@@ -34,7 +34,7 @@ export class RegisterResponsableComponent implements OnInit, AfterViewInit  {
           telephone: ['', Validators.required],
           activite_Entreprise: new FormControl('',[ Validators.required]),
           taille_Entreprise:['',Validators.required],
-          role:['', Validators.required],
+          role:['Responsable_Entreprise'],
           code_Fiscale: ['', Validators.required],
         },{
           validator: MustMatch('password', 'confirmPassword')

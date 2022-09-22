@@ -50,27 +50,28 @@
             <tr *ngFor="let o of listEmployees ; let i = index">
               <td>{{i}}</td>
               <td>{{o.employe.nom }}</td>
-              <td>{{o.prix_Revient | number : '3.1-3'}}</td>
-              <td>{{o.prix_Proposition | number : '3.1-3'}}</td>
-              <td>{{o.coutParEmp | number : '3.1-3'}}</td>
+              <td>{{o.prix_Revient  | number : '2.1'}}</td>
+              <td>{{o.prix_Proposition| number : '2.1' }}</td>
+              <td>{{o.coutParEmp | number : '2.1'}}</td>
               <td>70 %</td>
-              <td>{{o.marge_Brut | number : '3.1-3'}}</td>
-              <td>{{o.marge_nette | number : '3.1-3'}}</td>
+              <td>{{o.marge_Brut | number : '2.1' }}</td>
+              <td>{{o.marge_nette| number : '2.1'}}</td>
               <td>32%</td>
             </tr>
-            <tr>
-              <td>Totale</td>
-              <td>{{offre.qte_H_Siege_Site | number : '3.1-3'}}</td>
-              <td>{{offre.total_Prix_Revient | number : '3.1-3'}}</td>
-              <td>{{offre.total_Prix_Proposition | number : '3.1-3'}}</td>
-              <td>{{offre.total_Cout_Offre | number : '3.1-3'}}</td>
+            <tr id="bold1">
+              <td >Totale</td>
+              <td>{{offre.qte_H_Siege_Site}}</td>
+              <td>{{offre.total_Prix_Revient| number : '2.1'}}</td>
+              <td>{{offre.total_Prix_Proposition| number : '2.1'}}</td>
+              <td>{{offre.total_Cout_Offre| number : '2.1' }}</td>
               <td>70 %</td>
-              <td>{{offre.total_Marge_Brut | number : '3.1-3'}}</td>
-              <td>{{offre.total_Marge_Nette | number : '3.1-3'}}</td>
+              <td>{{offre.total_Marge_Brut | number : '2.1'}}</td>
+              <td>{{offre.total_Marge_Nette | number : '2.1'}}</td>
               <td>32%</td>
             </tr>
             </tbody>
-          </table> <br>
+          </table>
+          <br>
           <h5 class="text-primary" >La liste de produit de l'offre</h5>
 
           <table class="table table-sm">
@@ -89,7 +90,7 @@
               <th scope="col">Marge Net Finale</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="center">
             <tr *ngFor="let o of offre.produits ; let i = index">
               <td>{{i}}</td>
               <td>{{o.nom_Prod }}</td>
@@ -103,7 +104,7 @@
               <td>{{o.produit_TTC}}</td>
               <td></td>
             </tr>
-            <tr>
+            <tr id="bold">
               <td>Totale</td>
               <td>{{offre.total_Revient_Prod }}</td>
               <td></td>
@@ -119,6 +120,9 @@
             </tr>
             </tbody>
           </table>
+<!--          <button type="submit" class="btn btn-primary">Imprimer-->
+<!--            <span style="margin-left:10px;"></span>-->
+<!--          </button>-->
         </div>
       </div>
     </div>
