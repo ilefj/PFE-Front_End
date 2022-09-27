@@ -11,14 +11,7 @@ export const ROUTES: RouteInfo[] = [
   // },
   { path: '/dashboard/dashboard2', title: 'Dashboard Admin', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [],owner:'Admin'},
    { path: '/dashboard/dashboard2', title: 'Dashboard User', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [],owner:'Responsable_Entreprise' },
-  {
-    path: '', title: 'Gestion des Offres', icon: 'ft-bar-chart-2', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
-    submenu: [
-      { path: 'offres', title: 'Les Offres', icon: 'ft-airplay' , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-      // { path: '/Offre-edit', title: 'Edit', icon: 'ft-arrow-right submenu-icon', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
-    ],owner:'Responsable_Entreprise'
 
-  },
   {
     path: '', title: 'Gestion de R.H', icon: 'icon-user', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
     submenu: [
@@ -27,12 +20,20 @@ export const ROUTES: RouteInfo[] = [
     ],owner:'Responsable_Entreprise'
 
   },
+  // {
+  //   path: '', title: 'Gestion de R.M', icon: 'icon-wrench', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
+  //   submenu: [
+  //     { path: 'Produit', title: 'Gestion des Produits', icon: 'icon-list' , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+  //      { path: 'Service', title: 'Service', icon: 'icon-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
+  //   ],owner:'Responsable_Entreprise'
+  // },
   {
-    path: '', title: 'Gestion de R.M', icon: 'icon-wrench', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
+    path: '', title: 'Gestion des Offres', icon: 'ft-bar-chart-2', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
     submenu: [
-      { path: 'Produit', title: 'Gestion des Produits', icon: 'icon-list' , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-       { path: 'Service', title: 'Service', icon: 'icon-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
+      { path: 'offres', title: 'Les Offres', icon: 'ft-airplay' , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+      // { path: '/Offre-edit', title: 'Edit', icon: 'ft-arrow-right submenu-icon', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
     ],owner:'Responsable_Entreprise'
+
   },
   /*{ path: '/inbox', title: 'Email', icon: 'ft-mail', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
   { path: '/chat', title: 'Chat', icon: 'ft-message-square', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },

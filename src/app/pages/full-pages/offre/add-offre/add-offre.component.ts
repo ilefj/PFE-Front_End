@@ -72,28 +72,30 @@ export class AddOffreComponent implements OnInit {
     this.offreService.addOffre(this.registerForm.value).subscribe({
       next: (res) => {
         console.log(res);
-        console.log(this.registerForm.get('employe').value);
-        this.offreService.addOffreEmp( this.registerForm.get('employe').value , res.dateSet).subscribe({
-          next:(res2) =>{
-            console.log(res2);
-            console.log(this.registerForm.get('produit').value)
-            this.offreService.addProduit(this.registerForm.get("produit").value ,res.dateSet).subscribe({
-              next:(res4)=>{
-                console.log(res4);
+        if(res.responseCode == 1){
+          console.log(this.registerForm.get('employe').value);
+          this.offreService.addOffreEmp( this.registerForm.get('employe').value , res.dateSet).subscribe({
+            next:(res2) =>{
+              console.log(res2);
+              console.log(this.registerForm.get('produit').value)
+              this.offreService.addProduit(this.registerForm.get("produit").value ,res.dateSet).subscribe({
+                next:(res4)=>{
+                  console.log(res4);
+                  this.offreService.addUpdateOffre2(res.dateSet).subscribe({
+                    next:(res3)=>{
+                      console.log(res3);
 
+                      this.toastr.success(' offre has been added successfully')
+                      this.router.navigate(['/offres']);
+                    }
+                  })
+                }}
+              )
+            }
+          })}else{
+          this.toastr.error(res.responseMessage);
+        }
 
-            this.offreService.addUpdateOffre2(res.dateSet).subscribe({
-              next:(res3)=>{
-                console.log(res3);
-
-                this.toastr.success(' offre has been added successfully')
-                this.router.navigate(['/offres']);
-              }
-            })
-              }}
-            )
-          }
-        })
       }, error: (err) => {
         console.log("erreur", err)
 

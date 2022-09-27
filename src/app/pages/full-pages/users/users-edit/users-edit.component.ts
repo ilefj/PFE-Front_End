@@ -29,7 +29,7 @@ import {ToastrService} from "ngx-toastr";
     activite_Entreprise: ['', Validators.required],
     taille_Entreprise: ['', Validators.required],
     code_Fiscale: ['', Validators.required],
-    role:['', Validators.required],
+    role:['Responsable_Entreprise'],
     password:['']
   });
   idUser : string;
@@ -59,7 +59,19 @@ import {ToastrService} from "ngx-toastr";
     if(this.updateForm.invalid){
       return;
     }
-    this.userService.updateUser(this.idUser, this.updateForm.value).subscribe((data) =>{
+    var body ={
+      username : this.updateForm.controls['username'].value,
+      prenom :this.updateForm.controls['prenom'].value,
+      adresse :this.updateForm.controls['adresse'].value,
+      nom_Entreprise :this.updateForm.controls['nom_Entreprise'].value,
+      email :this.updateForm.controls['email'].value,
+      telephone :this.updateForm.controls['telephone'].value,
+      activite_Entreprise :this.updateForm.controls['activite_Entreprise'].value,
+      taille_Entreprise :this.updateForm.controls['taille_Entreprise'].value,
+      code_Fiscale :this.updateForm.controls['code_Fiscale'].value,
+      Role :this.updateForm.controls['role'].value,
+    }
+    this.userService.updateUser(this.idUser, body).subscribe((data) =>{
       console.log("user up to date");
       this.toastr.success(' User has been update successfully')
       this.router.navigate(['/users-list']);

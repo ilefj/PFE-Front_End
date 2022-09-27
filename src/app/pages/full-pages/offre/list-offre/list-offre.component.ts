@@ -90,15 +90,15 @@ export class ListOffreComponent implements OnInit {
 
   onDeleteOffre(id : string) {
     Swal.fire({
-      title: '<strong> Are you sure to delete </strong>',
+      title: '<strong> Êtes-vous sûr de vouloir supprimer </strong>',
       icon: 'info',
-      html: 'Press yes to delete it !!',
+      html: 'Appuyez sur oui pour le supprimer !!',
       showCloseButton: true,
       showCancelButton: true,
       focusConfirm: false,
-      confirmButtonText: '<i class="fa fa-thumbs-o-up"></i> Yes!',
+      confirmButtonText: '<i class="fa fa-thumbs-o-up"></i> Oui!',
       confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText: '<i class="fa fa-thumbs-o-down"> No</i>',
+      cancelButtonText: '<i class="fa fa-thumbs-o-down"> Non</i>',
       cancelButtonAriaLabel: 'Thumbs down',
       buttonsStyling: false,
       customClass: {
@@ -111,8 +111,8 @@ export class ListOffreComponent implements OnInit {
           this.getoffre();
         })
         Swal.fire(
-          'Deleted!',
-          'Offre has been deleted.',
+          'Supprimé!',
+          'Offre  a été supprimé.',
           'success'
         )
       }

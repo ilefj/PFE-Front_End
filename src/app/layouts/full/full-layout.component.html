@@ -8,7 +8,7 @@
   <app-horizontal-menu appTopMenu *ngIf="menuPosition === 'Top' && !displayOverlayMenu"></app-horizontal-menu>
   <!-- *TOP* Menu ends -->
 
-  <!-- *SIDE* Menu starts -->
+  <!-- *SIDE* Menu starts-->
   <div appSidebar *ngIf="menuPosition === 'Side' || displayOverlayMenu"
     [ngClass]="{'main-menu': menuPosition === 'Side' || displayOverlayMenu, 'menu-fixed': menuPosition === 'Side' || displayOverlayMenu, 'menu-native-scroll': !perfectScrollbarEnable }" class="app-sidebar"
     (mouseenter)="sidebarMouseenter($event)" (mouseleave)="sidebarMouseleave($event)" data-active-color="white"
@@ -18,7 +18,7 @@
     <div class="sidebar-background" [ngStyle]="{'background-image': 'url(' + bgImage + ')'}"
       *ngIf="config?.layout.sidebar.backgroundImage"></div>
   </div>
-  <!-- *SIDE* Menu ends -->
+  <!--*SIDE* Menu ends -->
 
   <div class="main-panel">
     <div class="main-content">
@@ -33,9 +33,9 @@
     <button class="btn btn-primary scroll-top" type="button" *ngIf="isScrollTopVisible" (click)="scrollToTop()"><i class="ft-arrow-up"></i></button>
   </div>
 
-  <!-- *NOTIFICATION-SIDEBAR* starts -->
+  <!-- *NOTIFICATION-SIDEBAR* starts
   <app-notification-sidebar></app-notification-sidebar>
-  <!-- *NOTIFICATION-SIDEBAR* ends -->
+   *NOTIFICATION-SIDEBAR* ends -->
 
   <!-- *CUSTOMIZER* starts -->
   <app-customizer></app-customizer>

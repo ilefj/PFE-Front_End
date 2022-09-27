@@ -91,8 +91,8 @@ export class AccountSettingsComponent implements OnInit {
       activite_Entreprise:userInfo.activite_Entreprise ,
       taille_Entreprise:userInfo.taille_Entreprise,
       code_Fiscale:userInfo.code_Fiscale,
-      role:userInfo.role,
-      Password: '',
+      Role:'Responsable_Entreprise',
+      Password:userInfo.Password,
     };
 
 

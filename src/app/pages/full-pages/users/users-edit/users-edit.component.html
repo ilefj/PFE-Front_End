@@ -18,7 +18,7 @@
                   <aw-wizard-step [stepTitle]="'Step 1'"
                                   [navigationSymbol]="{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }">
                     <br/>
-                    <h4 class="head text-center">Modifier Offre</h4>
+                    <h4 class="head text-center">Modifier Compte</h4>
                     <br/>
                     <div class="row">
                       <div class="col-md-6">
@@ -138,10 +138,9 @@
                             </div>
                             <div class="form-group">
                               <div class='col-sm-12 col-sm-6'>
-                                <select id="users-edit-role" class="form-control" required formControlName="role">
-                                  <option ngValue="role.user" selected [disabled]>Select Role</option>
-                                  <option *ngFor="let role of roles" >{{role.Role}}</option>
-                                </select>
+                                <label class="form-control-label" for="role">role</label>
+                                <input class="form-control input-md "formControlName="role"  required id="role" name="code_Fiscale"
+                                       type="text" placeholder="Responsable_Entreprise" disabled>
                               </div>
                             </div>
                           </div>
